@@ -1,0 +1,105 @@
+from django.shortcuts import render, redirect
+from medicSearch.models import Profile
+from django.db.models import Q
+from django.core.paginator import Paginator
+
+def list_medics_view(request):
+    name = request.GET.get('name')
+    speciality = request.GET.get('speciality')
+    neighborhood = request.GET.get('neighborhood')
+    city = request.GET.get('city')
+    state = request.GET.get('state')
+    
+    medics = Profile.objects.filter(role=2)
+    if name is not None and name != '':
+        medics = medics.filter(Q(user__first_name__contains=name) |
+        Q(user__username_contains=name))
+    
+    if speciality is not None:
+        medics = medics.filter(specialties__id=speciality)
+    
+    if neighborhood is not None:
+        medics = medics.filter(addresses__neighborhood__id=neighborhood)
+    else:
+        if city is not None:
+            medics = medics.filter(addresses__neighborhood__city__id=city)
+        elif state is not None:
+            medics = medics.filter(addresses__neighborhood__city__state__id=state)
+        if len(medics) > 0:
+            paginator = Paginator(medics, 8)
+            page = request.GET.get('page')
+            medics = paginator.get_page(page)
+
+        get_copy = request.GET.copy()
+        paramenters = get_copy.pop('page', True) and get_copy.urlencode()
+
+    context = {
+        'medics' : medics,
+        'paramenters': paramenters
+    }
+    return render(request, template_name='medics/medics.html',
+context=context, status=200)
+
+def add_favorite_view(request):
+    page = request.POST.get('page')
+    name = request.POST.get('name')
+    speciality = request.POST.get('speciality')
+    neighborhood = request.POST.get('neighborhood')
+    city = request.POST.get('city')
+    state = request.POST.get('state')
+    id = request.POST.get('id')
+
+    try:
+        profile = Profile.objects.filter(user=request.user).first()
+        medic = Profile.objects.filter(user_id=id).first()
+        Profile.favorites.add(medic.user)
+        Profile.save()
+        msg = 'Favorito adicionado com sucesso'
+        _type = 'success'
+    except Exception as e:
+        print('Erro %s' % e)
+        msg = 'Um erro ocorreu ao salvar o médico nos favoritos'
+        _type = 'danger'
+    
+    if page:
+        arguments = '?page=%s' % (page)
+    else:
+        arguments = '?page=1'
+    if name:
+        arguments += '&name=%s' % name
+    if speciality:
+        arguments += '&specinality=%s' % speciality
+    if neighborhood:
+        arguments += '&neighborhood=%s' % neighborhood
+    if city:
+        arguments += '&city=%s' % city
+    if state:
+        arguments += '&state=%s' % state
+    arguments += '&msg=%s&type=%s' % (msg, _type)
+
+    return redirect(to='/medic/%s' % arguments)
+
+def remove_favorite_view(request):
+    page = request.POST.get('page')
+    id = request.POST.get('id')
+
+    try:
+        profile = Profile.objects.filter(user=request.user).first()
+        medic = Profile.objects.filter(user__id=id).first()
+        profile.favorites.remove(medic.user)
+        profile.save()
+        msg = 'Favorito removido com sucesso.'
+        _type = 'succcess'
+    except Exception as e:
+        print('Erro %s' % e)
+        msg = 'Um erro ocorreu ao remover o médico nos favoritos.'
+        _type = 'danger'
+    
+    if page:
+        arguments = '?page=%s' % (page)
+    else:
+        arguments = '?page=1'
+
+    arguments += '&msg=%s&type=%s' % (msg, _type)
+
+    return redirect(to='/profile/%s' % arguments)
