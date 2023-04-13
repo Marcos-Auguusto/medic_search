@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-#lass ProfileAdmin(admin.ModelAdmin):
-#    date_hierarchy = 'created_at'
-
 class ProfileAdmin(admin.ModelAdmin):
     fields = ('user', ('role',), 'image', 'birthday', 'specialties', 'addresses',)
 
@@ -18,5 +15,5 @@ admin.site.register(speciality)
 admin.site.register(city)
 
 
-# Register your models here.
+
 
