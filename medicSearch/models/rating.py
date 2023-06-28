@@ -2,9 +2,9 @@ from medicSearch.models import *
 
 class rating(models.Model):
     user = models.ForeignKey(User, related_name='avaliou',
-on_delete=models.CASCADE)
+                                on_delete=models.CASCADE)
     user_rated = models.ForeignKey(User, related_name='avaliado',
-on_delete=models.CASCADE)
+                                        on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=5, decimal_places=2)
     opinion = models.TextField(null=True, blank=True)
     status = models.BooleanField(default=True)

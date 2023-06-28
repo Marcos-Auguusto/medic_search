@@ -31,7 +31,8 @@ class Profile(models.Model):
     def show_scoring_average(self):
         from .rating import rating
         try:
-            ratings = rating.objects.filter(user_rated=self.user).aggregate(Sum('value'), Count('user'))
+            ratings = rating.objects.filter(user_rated=self.user).aggregate(Sum('value'),
+                                                                            Count('user'))
             if ratings['user__count'] > 0:
                 scoring_average = ratings['value__sum'] / ratings['user__count']
                 scoring_average = round(scoring_average, 2) 
@@ -48,8 +49,6 @@ class Profile(models.Model):
         from .rating import rating
         return rating.objects.filter(user_rated=self.user)
    
-
-
     def __str__(self):
         return '{}'.format(self.user.username)
 

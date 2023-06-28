@@ -11,28 +11,28 @@
                 <div id='image-profile' style='background-image: url('/media/{{profile.image}}');'></div>
                 {% if profile.role == 1 %}
                 <p class='badge badge-primary text-center' id='badge-role'>
-<i class='fa fa-building'></i> Administrador </p>
+                <i class='fa fa-building'></i> Administrador </p>
                 {% elif profile.role == 2 %}
                 <p class='badge badge-primary text-center' id='badge-role'>
-<i class='fa fa-user-md'></i> Médico </p>
+                <i class='fa fa-user-md'></i> Médico </p>
                 {% else %}
                 <p class='badge badge-primary text-center' id='badge-role'>
-<i class='fa fa-user'></i> Paciente </p>
+                <i class='fa fa-user'></i> Paciente </p>
                 {% endif %}
                 <ul class='list-group'>
                     <li class='list-group-item'> Nome:
-{{profile.user.get_full_name | default:'Sem nome'}}</li>
+                        {{profile.user.get_full_name | default:'Sem nome'}}</li>
                     <li class='list-group-item'> Usuário:   
-{{profile.user.username | default:'Sem usuário'}}</li>
+                        {{profile.user.username | default:'Sem usuário'}}</li>
                     <li class='list-group-item'> E-mail:
-{{profile.user.email | default:'Sem e-mail'}}</li>
+                        {{profile.user.email | default:'Sem e-mail'}}</li>
                     <li class='list-group-item'> Nascimento:
-{{profile.birthday | date:'d/m/Y' | default:'Sem data'}}</li>
+                        {{profile.birthday | date:'d/m/Y' | default:'Sem data'}}</li>
                     {% if profile.role == 2 %}
                     <li class='list-group-item'> Nota:
-{{profile.show_scoring_average}}</li>
+                        {{profile.show_scoring_average}}</li>
                     <li class='list-group-item'> Especialidades:
-{{profile.specialties.all | join:','}}</li>
+                        {{profile.specialties.all | join:','}}</li>
                     {% endif %}
                 </ul>
             </div>
@@ -48,30 +48,30 @@
                     <div class='col-xs-12 col-md-4 col-lg-4'>
                         <div class='card mb-4'>
                             <div class='image-circle' style='background-image:
-url('/media/{{favorite.image}}');'></div>
+                            url('/media/{{favorite.image}}');'></div>
                             <div class='card-body'>
                                 <h5 class='card-title'>
-{{favorite.user.get_full_name}}</h5>
+                                    {{favorite.user.get_full_name}}</h5>
                                 <h6> Nota:
-{{favorite.show_scoring_average}} <i class='fa fa-star'></i></h6>
+                                    {{favorite.show_scoring_average}} <i class='fa fa-star'></i></h6>
                                 <ul class='specialties'>
                                     {% for speciality in favorite.specialties.all %}
                                         <li>{{speciality}}</li>
-                                        {% endfor %}
+                                    {% endfor %}
                                 </ul>
                                 <div class='address mb-2'>
                                     {{favorite.addresses.first.address | default:'Nenhum endereço.'
-| slice:':15'}}...
+                                    | slice:':15'}}...
                                 </div>
                                 <a href={% url 'profile' favorite.id %}
-class='btn btn-primary btn-card'> Ver médico </a>
+                                class='btn btn-primary btn-card'> Ver médico </a>
                                 {% if user.is_authenticated %}
                                 <form method='POST' action={% url 'medic-favorite-remove' %}> 
                                     {% csrf_token %}
                                     <input type='hidden' value='{{favorite.id}}' name='id'>
                                     <input type='hidden' value='{{request.GET.page}}' name='page'>
                                     <button type='submit' class='btn btn-danger btn-card'><i class='fa fa-heart'>
-</i> Remover </button>
+                                    </i> Remover </button>
                                 </form>
                                 {% endif %}
                             </div>
@@ -84,17 +84,18 @@ class='btn btn-primary btn-card'> Ver médico </a>
                         <ul class='pagination'>
                             {% if favorites.has_previous %}
                                 <li class='page-item'><a class='page-link'
-href='?page=1'>&laquo; Primeiro</a></li>
+                                href='?page=1'>&laquo; Primeiro</a></li>
                                 <li class='page-item'><a class='page-link'
-href='?page={{ favorites.previous_page_number }}'> Anterior </a></li>
+                                href='?page={{ favorites.previous_page_number }}'> Anterior </a></li>
                             {% endif %}
                                 <li class='page-item'><a class='page-link'
-href='#'> Página {{ favorites.number }} de {{ favorites.paginator.num_pages }}.</a></li>
+                                href='#'> Página {{ favorites.number }} de {{ favorites.paginator.num_pages }}.
+                                </a></li>
                             {% if favorites.has_next %}
                                 <li class='page-item'><a class='page-link'
-href='?page={{ favorites.next_page_number }}'> Próximo </a></li>
+                                href='?page={{ favorites.next_page_number }}'> Próximo </a></li>
                                 <li class='page-item'><a class='page-link'
-href='?page={{ favorites.paginator.num_pages }}'> Último &raquo;</a></li>
+                                href='?page={{ favorites.paginator.num_pages }}'> Último &raquo;</a></li>
                             {% endif %}
                         </ul>
                     </nav>
@@ -109,19 +110,19 @@ href='?page={{ favorites.paginator.num_pages }}'> Último &raquo;</a></li>
                         <div class='card mb-3'>
                             <div class='card-body'>
                                 <h5 class='card-title'>{{address.address}},
-{{address.neighborhood.name}}, {{address.neighborhood.city}}</h5>
+                                    {{address.neighborhood.name}}, {{address.neighborhood.city}}</h5>
                                 <h6 class='card-subtitle mb-2 text-muted'> Telefones:
-{{address.phone}}</h6>
+                                    {{address.phone}}</h6>
                                 <ul id='days'>
                                     <li> Dias de funcionamento: </li>
-                                    {% for day in address.days_week.all %}
+                                        {% for day in address.days_week.all %}
                                     <li> - {{day.name}} | {{address.opening_time}} -
-{{address.closing_time}}</li>
+                                        {{address.closing_time}}</li>
                         {% endfor %}
                     </ul>
                     {% if profile.user.id == request.user.id %}
                     <a href='/address/{{address.id}}' class='btn btn-primary'>
-<i class='fa fa-edit'></i></a>
+                    <i class='fa fa-edit'></i></a>
                     {% endif %}
                     </div>
                 </div>
@@ -145,18 +146,18 @@ href='?page={{ favorites.paginator.num_pages }}'> Último &raquo;</a></li>
                                             <ul class='pagination'>
                                             {% if ratings.has_previous %}
                                                 <li class='page-item'><a class='page-link' href='?page=1'>
-&laquo; Primeiro </a></li>
+                                                    &laquo; Primeiro </a></li>
                                                 <li class='page-item'><a class='page-link' href='?page={{
-ratings.previous_page_number }}'> Anterior </a></li>
-                                {% endif %}
+                                                    ratings.previous_page_number }}'> Anterior </a></li>
+                                            {% endif %}
                                     <li class='page-item'><a class='page-link' href='#'> Página
-{{ ratings.number }} de {{ ratings.paginator.num_pages }}.</a></li>
-                                {% if ratings.has_next %}
-                                        <li class='page-item'><a class='page-link' href='?page={{
-ratings.next_page_number }}'> Próximo </a></li>
-                                        <li class='page-item'><a class='page-link' href='?page={{
-ratings.paginator.num_pages }}'> Último &raquo; </a></li>
-                                {% endif %}
+                                        {{ ratings.number }} de {{ ratings.paginator.num_pages }}.</a></li>
+                                            {% if ratings.has_next %}
+                                                    <li class='page-item'><a class='page-link' href='?page={{
+                                                        ratings.next_page_number }}'> Próximo </a></li>
+                                                    <li class='page-item'><a class='page-link' href='?page={{
+                                                        ratings.paginator.num_pages }}'> Último &raquo; </a></li>
+                                            {% endif %}
                                 </ul>
                             </nav>
                         </div>
