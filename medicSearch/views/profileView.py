@@ -72,5 +72,4 @@ def edit_profile(request):
         'message': message 
     }
 
-    return render(request, template_name='user/profile.html',
-context=context, status=200)
+    return render(request, template_name='user/profile.html', context=context, status=200)
