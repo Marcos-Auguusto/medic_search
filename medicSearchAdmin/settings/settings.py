@@ -13,9 +13,6 @@ SECRET_KEY = 'django-insecure-2kzig$_f9o8lv9)1h_mdybolg---p3&u)!c$!jc_6v^g!u1o%@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -25,9 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'medicSearch',
-   
-    
+    'medicSearch',    
 ]
 
 MIDDLEWARE = [
