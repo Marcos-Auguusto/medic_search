@@ -6,53 +6,43 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1,  shrink-to-fit=no"
-    />
-    <link rel='stylesheet' href='{% static 'css/global.css'%}' /> 
-    {% block styles%} {% endblock %}
-
+      content="width=device-width, initial-scale=1,  shrink-to-fit=no"/>
     <title>Buscar Doutor - {% block title %}{% endblock %}</title>
   </head>
   <body>
     <header>
-      <nav class="navbar justify-content-end navbar-expand-lg">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/"> <i class="fa fa-home"></i> Home</a>
+      <nav>
+        <ul>
+          <li>
+            <a href="/"> <i></i> Home</a>
           </li>
-
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="#"> <i class="fa fa-user"></i> Perfil</a>
+          <li>
+            <a href="#"> <i></i> Perfil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fa fa-edit"></i> Editar Perfil</a
-            >
+          <li>
+            <a href="#">
+              <i></i> Editar Perfil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"
-              ><i class="fa fa-sign-out"> </i> Sair</a
-            >
+          <li>
+            <a href="#">
+              <i> </i> Sair</a>
           </li>
           {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fa fa-sign-in"></i> Entrar</a
-            >
+          <li>
+            <a href="#">
+              <i></i>Entrar</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fa fa-edit"></i> Registrar</a
-            >
+          <li>
+            <a href="#">
+              <i></i>Registrar</a>
           </li>
           {% endif %}
         </ul>
       </nav>
     </header>
     {% block content %}{% endblock %}
-    <footer class="page-footer font-small blue">
-      <div class="footer-copyright text-center py-3">₢2022</div>
+    <footer>
     </footer>
     {% block scripts %}{% endblock %}
   </body>

@@ -16,7 +16,7 @@ class UserProfileForm(ModelForm):
             'user': forms.HiddenInput(),
             'role': forms.Select(attrs={'class': 'form-control'}),
             'birthday': forms.DateInput(attrs={'class': 'form-control',
-'type': 'date'}),
+            'type': 'date'}),
             'image': forms.FileInput(attrs={'class': 'form-control'})
         }
 
