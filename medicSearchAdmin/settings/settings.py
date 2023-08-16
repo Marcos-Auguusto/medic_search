@@ -95,10 +95,11 @@ USE_TZ = True
 STATIC_URL = 'static/medicSearchAdmin/settings/settings.py'
 
 from pathlib import Path
-# Adicione a linha a seguir no topo do arquivo após a importação da lib pathlib
+
 import os
 STATIC_URL = 'static/'
-# Adicione apenas a linha abaixo
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = 'media/'

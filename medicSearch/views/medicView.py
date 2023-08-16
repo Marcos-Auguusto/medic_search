@@ -12,8 +12,9 @@ def list_medics_view(request):
     
     medics = Profile.objects.filter(role=2)
     if name is not None and name != '':
-        medics = medics.filter(Q(user__first_name__contains=name) |
-        Q(user__username_contains=name))
+        medics = medics.filter(Q(user__first_name__contains=name) | 
+                               Q(user__username__contains=name))
+
     
     if speciality is not None:
         medics = medics.filter(specialties__id=speciality)
@@ -52,7 +53,7 @@ def add_favorite_view(request):
     try:
         profile = Profile.objects.filter(user=request.user).first()
         medic = Profile.objects.filter(user_id=id).first()
-        Profile.favorites.add(medic.user)
+        profile.favorites.add(medic.user)
         Profile.save()
         msg = 'Favorito adicionado com sucesso'
         _type = 'success'
@@ -89,7 +90,7 @@ def remove_favorite_view(request):
         profile.favorites.remove(medic.user)
         profile.save()
         msg = 'Favorito removido com sucesso.'
-        _type = 'succcess'
+        _type = 'success'
     except Exception as e:
         print('Erro %s' % e)
         msg = 'Um erro ocorreu ao remover o médico nos favoritos.'

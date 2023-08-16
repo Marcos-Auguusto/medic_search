@@ -4,7 +4,6 @@ from .models import *
 class ProfileAdmin(admin.ModelAdmin):
     fields = ('user', ('role',), 'image', 'birthday', 'specialties', 'addresses',)
 
-
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(state)
 admin.site.register(address)
