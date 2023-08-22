@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev":  "tailwindcss -i medicSearch/static/tw/tailwind-input.css -o medicSearch/static/css/output.css --watch"
+  },
   "dependencies": {
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.27",
