@@ -14,7 +14,6 @@ def list_medics_view(request):
     if name is not None and name != '':
         medics = medics.filter(Q(user__first_name__contains=name) | 
                                Q(user__username__contains=name))
-
     
     if speciality is not None:
         medics = medics.filter(specialties__id=speciality)
