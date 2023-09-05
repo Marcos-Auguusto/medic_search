@@ -6,7 +6,7 @@
 <div>
     <div>
         <div> Foram encontrados: {{ medics | length }} médico(s) </div>
-        {% if request.GET.msg %}
+            {% if request.GET.msg %}
         <div>{{ request.GET.msg }}</div>
         {% endif %}
         <div>

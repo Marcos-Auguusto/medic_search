@@ -21,25 +21,27 @@ def list_medics_view(request):
     
     if neighborhood is not None:
         medics = medics.filter(addresses__neighborhood__id=neighborhood)
-    else:
-        if city is not None:
-            medics = medics.filter(addresses__neighborhood__city__id=city)
-        elif state is not None:
-            medics = medics.filter(addresses__neighborhood__city__state__id=state)
-        if len(medics) > 0:
-            paginator = Paginator(medics, 8)
-            page = request.GET.get('page')
-            medics = paginator.get_page(page)
+    
+    if city is not None:
+        medics = medics.filter(addresses__neighborhood__city__id=city)
+    
+    if state is not None:
+        medics = medics.filter(addresses__neighborhood__city__state__id=state)
 
-        get_copy = request.GET.copy()
-        paramenters = get_copy.pop('page', True) and get_copy.urlencode()
+    if len(medics) > 0:
+        paginator = Paginator(medics, 8)
+        page = request.GET.get('page')
+        medics = paginator.get_page(page)
+
+    get_copy = request.GET.copy()
+    paramenters = get_copy.pop('page', True) and get_copy.urlencode()
 
     context = {
         'medics' : medics,
         'paramenters': paramenters
     }
-    return render(request, template_name='medics/medics.html',
-context=context, status=200)
+    
+    return render(request, template_name='medics/medics.html', context=context, status=200)
 
 def add_favorite_view(request):
     page = request.POST.get('page')
