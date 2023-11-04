@@ -1,58 +1,91 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1,  shrink-to-fit=no"/>
-    <link rel="stylesheet" href="{% static 'css/output.css' %}" >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=ZCOOL+XiaoWei&display=swap"rel="stylesheet">
+      content="width=device-width, initial-scale=1,  shrink-to-fit=no"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Red+Hat+Display:wght@300&family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
     <title>Buscar Doutor - {% block title %}{% endblock %}</title>
   </head>
   <body class="w-full h-[580px] bg-bgPrimary-200">
     <header>
-      <nav class="flex items-center fixed top-0 w-full h-14 bg-white p-5">
-        <div class="container flex justify-between items-center mx-20">
+      <nav class="flex fixed top-0 w-full h-14 bg-white p-5">
+        <div class="container flex justify-between mx-20">
           <div class="flex items-center">
-            <img src="{% static 'img\logo.svg'%}" alt="logo medic" class="h-12">
-          <a href="/" class="font-inter text-3xl text-neutral-900 font-extrabold"> medic</a>
+            <img
+              src="{% static 'img\logo.svg'%}"
+              alt="logo medic"
+              class="h-12"
+            />
+            <a
+              href="/"
+              class="font-inter text-3xl text-neutral-900 font-extrabold"
+            >
+              medic</a
+            >
           </div>
           <ul class="flex space-x-6">
-          <li>
-            <a href="/" class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\house-chimney.svg'%}" class="h-[14px] mx-2"></img>Home</a>
-          </li>
+            <li>
+              <a
+                href="/"
+                class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400"
+                >Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/"
+                class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400"
+                >Agendamento
+              </a>
+            </li>
+            <li>
+              <a
+                href="/"
+                class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400"
+                >Profissionais
+              </a>
+            </li>
+            <li>
+              <a
+                href="/"
+                class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400"
+                >Sobre nós
+              </a>
+            </li>
+          </ul>
           {% if user.is_authenticated %}
-          <li>
-            <a href="#" class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400">Perfil</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\user-pen.svg'%}" class="h-[14px] mx-2"> Editar Perfil</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\exit.svg'%}" class="h-[14px] mx-2"> Sair</a>
-          </li>
+          <a
+            href="#"
+            class="flex items-center font-inter text-base font-medium text-neutral-800 hover:text-neutral-400"
+          >
+            Sair
+          </a>
           {% else %}
-          <li>
-            <a href="#" class="font-inter text-base font-medium text-neutral-800 hover:text-neutral-400">
-              <i></i>Entrar</a>
-          </li>
-          <li>
-            <a href="#" class="font-inter text-base font-medium text-neutral-800 hover:text-neutral-400">
-              <i></i>Registrar</a>
-          </li>
+          <a
+            href="#"
+            class="font-inter text-base font-medium text-neutral-800 hover:text-neutral-400"
+          >
+            Login
+          </a>
+
           {% endif %}
-        </ul>
-      </div>       
+        </div>
       </nav>
     </header>
-    <div class="flex justify-center mt-[100px]">{% block content %}{% endblock %}</div>
+    <div class="flex justify-center mt-[100px]">
+      {% block content %}{% endblock %}
+    </div>
     <footer>
       <div></div>
     </footer>
