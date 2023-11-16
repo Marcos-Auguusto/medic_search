@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit',
   content: ["./medicSearch/**/*.{html,js}"],
   theme: {
-    extend: { 
+    extend: {
+      spacing: {
+        '527': '527px',
+        '507': '507px',
+      },       
       fontFamily: {
       inter: ['Inter', 'sans'],
       },
@@ -17,5 +22,6 @@ module.exports = {
       },
   },
   plugins: [],
-}
+  }
+
 }
