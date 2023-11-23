@@ -11,7 +11,7 @@
   ></div>
   <div class="absolute z-10 right-0 flex justify-end w-full">
     <form
-      class="flex w-[527px] h-[507px] bg-white rounded-3xl shadow-xl mt-[72px] mr-[120px] items-center justify-center"
+      class="flex w-[527px] h-[507px] bg-white rounded-3xl shadow-xl mt-10 mr-[120px] items-center justify-center"
       action="{% url 'medics' %}"
       method="GET"
     >
@@ -20,18 +20,22 @@
           Encontre um médico
         </h3>
 
-        <div class="w-full h-10 border-gray-100 border-2 rounded-md mb-3">
+        <div
+          class="bg-gray-50 w-full h-10 border border-gray-300 rounded-lg mb-3"
+        >
           <input
-            class="w-full h-full font-inter text-sm outline-none p-4"
+            class="w-full h-full font-inter text-sm px-4 outline-none"
             type="text"
             name="name"
             placeholder="Buscar por nome"
           />
         </div>
 
-        <div class="w-full h-10 border-gray-100 border-2 rounded-md mb-3">
+        <div
+          class="bg-gray-50 w-full h-10 border border-gray-300 rounded-lg mb-3"
+        >
           <select
-            class="w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
+            class="block w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
             name="speciality"
           >
             <option value="0" selected disabled>
@@ -40,27 +44,33 @@
             <option value="1">Neurocirugia</option>
           </select>
         </div>
-        <div class="w-full h-10 border-gray-100 border-2 rounded-md mb-3">
+        <div
+          class="bg-gray-50 w-full h-10 border border-gray-300 rounded-lg mb-3"
+        >
           <select
-            class="w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
+            class="block w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
             name="state"
           >
             <option value="0" selected disabled>Selecione um estado</option>
             <option value="1">Rio de Janeiro</option>
           </select>
         </div>
-        <div class="w-full h-10 border-gray-100 border-2 rounded-md mb-3">
+        <div
+          class="bg-gray-50 w-full h-10 border border-gray-300 rounded-lg mb-3"
+        >
           <select
-            class="w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
+            class="block w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
             name="city"
           >
             <option value="0" selected disabled>Selecione uma cidade</option>
             <option value="1">Rio de Janeiro</option>
           </select>
         </div>
-        <div class="w-full h-10 border-gray-100 border-2 rounded-md mb-3">
+        <div
+          class="bg-gray-50 w-full h-10 border border-gray-300 rounded-lg mb-3"
+        >
           <select
-            class="w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
+            class="block w-full h-full font-inter text-sm text-gray-400 pl-4 outline-none"
             name="neighborhood"
           >
             <option value="0" selected disabled>Selecione um bairro</option>
@@ -68,7 +78,7 @@
           </select>
         </div>
         <div>
-          <div class="text-center py-3 bg-btn-200 rounded-md">
+          <div class="text-center py-3 bg-btn-200 hover:bg-btn-300 rounded-md">
             <button
               class="font-inter font-bold text-lg text-white"
               type="submit"
