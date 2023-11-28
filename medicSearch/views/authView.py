@@ -35,8 +35,7 @@ def login_view(request):
         'link_href': '/register' 
     }
 
-    return render(request, template_name='auth/auth.html',
-context=context, status=200)
+    return render(request, template_name='auth/auth.html', context=context, status=200)
 
 def register_view(request):
     registerForm = RegisterForm()
