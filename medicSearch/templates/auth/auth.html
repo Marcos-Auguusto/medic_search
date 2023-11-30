@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+<!-- prettier-ignore -->
 {% load static %} 
 {% block title %} {{title}} 
 {% endblock %}
@@ -7,19 +7,13 @@
 <div>
   <div>
     <div>
-      <form
-        method="POST"
-        action=""
-      >
-        <h3>{{title}}</h3>
+      <form method="POST" action="">
         {% if message is not None %}
         <div>{{ message.text }}</div>
         {% endif %} {% csrf_token %} {% for f in form %}
         <div>
           {{ f.label }} {{ f }} {% for error in f.errors %}
-          <div style="display: initial">
-            {{ error }}
-          </div>
+          <div style="display: initial">{{ error }}</div>
           {% endfor %}
         </div>
         {% endfor %}
