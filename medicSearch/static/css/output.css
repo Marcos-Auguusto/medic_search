@@ -885,17 +885,12 @@ video {
   outline-offset: 2px;
 }
 
-.hover\:bg-btn-300:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 38 85 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-colorBlue-100:hover {
+.hover\:bg-btn-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(5 108 242 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-btn-100:hover {
+.hover\:bg-colorBlue-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(5 108 242 / var(--tw-bg-opacity));
 }
