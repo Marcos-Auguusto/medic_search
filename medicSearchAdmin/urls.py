@@ -12,6 +12,7 @@ urlpatterns = [
     path('', include('medicSearch.urls.authUrls')),
     path('profile/', include('medicSearch.urls.profileUrls')),
     path('medic/', include('medicSearch.urls.medicUrls')),
+    path('patient/', include('medicSearch.urls.homePatientUrls')),
 
 
 ]

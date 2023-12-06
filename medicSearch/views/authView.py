@@ -1,14 +1,15 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from medicSearch.forms.AuthForm import LoginForm, RegisterForm
 
-def login_view(request):
+def login_patient_view(request):
     loginForm = LoginForm()
     message = None
 
     if request.user.is_authenticated:
-        return redirect('/')
+        return redirect('/patient')
     
     if request.method == 'POST':
         username = request.POST['username']
@@ -17,26 +18,25 @@ def login_view(request):
 
         if loginForm.is_valid():
             user = authenticate(username=username, password=password)
+            
             if user is not None:
-                login(request,user)
-                return redirect('/')
-            else:
-                message = {
-                    'type': 'danger',
-                    'text': 'Dados de usuário incorretos'
-                }
+                login(request, user)
+
+                if user.profile.role == 3:  
+                    return redirect('/patient') 
+                else:
+                    message.error(request, 'Acesso não permitido.')
+                    return redirect('login')
 
     context = {
         'form': loginForm,
         'message': message,
-        'title': 'Login',
         'button_text': 'Entrar',
         'link_text': 'Registrar',
         'link_href': '/register' 
     }
 
-    return render(request, template_name='auth/auth.html',
-context=context, status=200)
+    return render(request, template_name='auth/auth.html', context=context, status=200)
 
 def register_view(request):
     registerForm = RegisterForm()
@@ -77,5 +77,8 @@ def register_view(request):
         'link_text': 'Login',
         'link_href': '/login'
     }
-    return render(request, template_name='auth/auth.html',
-context=context, status=200)
+    return render(request, template_name='auth/auth.html', context=context, status=200)
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
