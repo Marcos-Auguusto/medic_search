@@ -23,12 +23,13 @@
     <title>Medic - {% block title %}{% endblock %}</title>
   </head>
   <body class="bg-bgPrimary-200">
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-      <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-10 py-4"
-      >
+    <nav class="bg-white border-gray-200 py-2">
+      <div class="flex flex-wrap items-center justify-between mx-10">
         <!-- Logo -->
-        <a href="{% url 'home' %}" class="flex space-x-3 rtl:space-x-reverse">
+        <a
+          href="{% url 'home' %}"
+          class="flex items-center rtl:space-x-reverse"
+        >
           <img class="h-12" src="{% static 'img\logo.svg' %}" alt="Logo" />
           <span class="font-inter font-extrabold text-3xl">medic</span>
         </a>
@@ -57,37 +58,36 @@
           </svg>
         </button>
         <!-- Navigation links -->
-        <div
-          class="w-full block lg:w-auto md:hidden lg:flex items-center"
-          id="targetEl"
-        >
-          <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
-          >
-            <a
-              href=""
-              class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-              >Home</a
+        <div class="w-full block lg:w-auto lg:flex items-center" id="targetEl">
+          <div>
+            <ul
+              class="font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-8 md:mt-0 md:bg-white"
             >
-            <a
-              href="{% url 'home_patient' %}"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >Agendamento</a
-            >
-            <a
-              href=""
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >Profissionais</a
-            >
-            <a
-              href=""
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >Sobre nós</a
-            >
-          </ul>
-
+              <a
+                href=""
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                >Home</a
+              >
+              <a
+                href="{% url 'home_patient' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >Agendamento</a
+              >
+              <a
+                href=""
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >Profissionais</a
+              >
+              <a
+                href=""
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >Sobre nós</a
+              >
+            </ul>
+          </div>
+          <div class="w-12"></div>
           <div
-            class="flex flex-col space-y-3 md:space-x-3 md:space-y-0 md:flex-row lg:w-auto py-3"
+            class="flex flex-col space-y-3 md:space-x-3 md:space-y-0 justify-center md:flex-row lg:w-auto py-3"
           >
             <!-- User is authenticated -->
             {% if user.is_authenticated %}
@@ -114,8 +114,112 @@
         </div>
       </div>
     </nav>
-    <section class="mt-20">{% block content %}{% endblock %}</section>
-    <footer></footer>
+    <section>{% block content %}{% endblock %}</section>
+    <footer class="bg-colorBlue-100 text-white">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="flex flex-wrap justify-between">
+          <div class="mb-6 flex w-full items-center lg:w-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2 h-8 w-8 text-[#69b3ff]"
+            >
+              <path
+                d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"
+              ></path>
+            </svg>
+            <span class="text-2xl font-bold">medic</span>
+          </div>
+          <div class="mb-6 w-full lg:w-1/4">
+            <h5 class="mb-2 text-lg font-semibold">Central de ajuda</h5>
+            <ul class="space-y-1">
+              <li>Perguntas Frequentes</li>
+              <li>Fale Conosco</li>
+              <li>Ouvidoria</li>
+            </ul>
+          </div>
+          <div class="mb-6 w-full lg:w-1/4">
+            <h5 class="mb-2 text-lg font-semibold">Atendimento à convênios</h5>
+            <ul class="space-y-1">
+              <li>Planos Atendidos</li>
+              <li>Especialidades</li>
+              <li>Agendamentos de Consulta</li>
+            </ul>
+          </div>
+          <div class="w-full lg:w-1/4">
+            <h5 class="mb-2 text-lg font-semibold">Responsabilidade social</h5>
+            <ul class="space-y-1">
+              <li>Ações Sociais</li>
+              <li>Voluntariado</li>
+              <li>Faça sua doação</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-[#69b3ff] pt-4">
+          <div class="flex flex-wrap items-center justify-between">
+            <div class="mb-4 text-sm">Copyright ©2022 All rights reserved</div>
+            <div class="flex space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     {% block scripts %}{% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>
