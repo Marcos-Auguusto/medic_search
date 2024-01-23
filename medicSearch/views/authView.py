@@ -1,16 +1,17 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from medicSearch.forms.AuthForm import LoginForm, RegisterForm
 
+
 def login_patient_view(request):
     loginForm = LoginForm()
     message = None
 
-    if request.user.is_authenticated:
-        return redirect('/patient')
-    
+    # if request.user.is_authenticated:
+    #     return redirect('/patient')
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -18,12 +19,12 @@ def login_patient_view(request):
 
         if loginForm.is_valid():
             user = authenticate(username=username, password=password)
-            
+
             if user is not None:
                 login(request, user)
 
-                if user.profile.role == 3:  
-                    return redirect('/patient') 
+                if user.profile.role == 3:
+                    return redirect('/patient')
                 else:
                     message.error(request, 'Acesso não permitido.')
                     return redirect('login')
@@ -33,10 +34,11 @@ def login_patient_view(request):
         'message': message,
         'button_text': 'Entrar',
         'link_text': 'Registrar',
-        'link_href': '/register' 
+        'link_href': '/register'
     }
 
     return render(request, template_name='auth/auth.html', context=context, status=200)
+
 
 def register_view(request):
     registerForm = RegisterForm()
@@ -44,7 +46,7 @@ def register_view(request):
 
     if request.user.is_authenticated:
         return redirect('/')
-    
+
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
@@ -56,18 +58,22 @@ def register_view(request):
             verifyEmail = User.objects.filter(email=email).first()
 
             if verifyUsername is not None:
-                message = { 'type': 'danger', 'text':'Já existe um usuário com este username!'}
+                message = {'type': 'danger',
+                           'text': 'Já existe um usuário com este username!'}
 
             elif verifyEmail is not None:
-                message = { 'type': 'danger', 'text':'Já existe um usuário com este e-mail!'}
+                message = {'type': 'danger',
+                           'text': 'Já existe um usuário com este e-mail!'}
 
             else:
                 user = User.objects.create_user(username, email, password)
                 if user is not None:
-                    message = { 'type': 'success', 'text': 'Conta criada com sucesso!'}
-                
+                    message = {'type': 'success',
+                               'text': 'Conta criada com sucesso!'}
+
                 else:
-                    message = { 'type': 'danger', 'text': 'Um erro ocorreu ao tentar criar o usuário.'}
+                    message = {
+                        'type': 'danger', 'text': 'Um erro ocorreu ao tentar criar o usuário.'}
 
     context = {
         'form': registerForm,
@@ -78,6 +84,7 @@ def register_view(request):
         'link_href': '/login'
     }
     return render(request, template_name='auth/auth.html', context=context, status=200)
+
 
 def logout_view(request):
     logout(request)

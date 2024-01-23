@@ -17,8 +17,7 @@
       rel="stylesheet"
     />
     {% compress css %}
-    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
-  
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" /> 
     {% endcompress %}
 
     <title>Medic - {% block title %}{% endblock %}</title>
@@ -96,7 +95,6 @@
             <a href="{% url 'logout' %}" class=""> Sair </a>
             {% else %}
             <!-- button login -->
-
             <button
               type="button"
               class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
