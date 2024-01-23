@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
-  content: ["./medicSearch/**/*.{html,js}"],
+  content: [
+    "./medicSearch/**/*.{html,js}",
+    "./node_modules/flowbite/**/*.js"
+  ],
   theme: {
     extend: {
       spacing: {
@@ -29,7 +32,9 @@ module.exports = {
         },
       },
   },
-  plugins: [],
-  }
+  plugins: [
+    require('flowbite/plugin')
+  ]
+}
 
 }

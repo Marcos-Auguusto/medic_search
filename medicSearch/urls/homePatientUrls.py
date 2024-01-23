@@ -1,7 +1,7 @@
 from django.urls import path
-from medicSearch.views.homePatientView import home_view
+from medicSearch.views.homePatientView import home_patient
 
 urlpatterns = [
-    path('', home_view),
-    
+    path('home-patient', home_patient, name='home_patient'),
+
 ]
