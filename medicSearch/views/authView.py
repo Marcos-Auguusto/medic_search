@@ -78,7 +78,7 @@ def register_view(request):
     context = {
         'form': registerForm,
         'message': message,
-        'title': 'Registar',
+        'title': 'Registrar',
         'button_text': 'Registar',
         'link_text': 'Login',
         'link_href': '/login'

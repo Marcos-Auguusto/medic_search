@@ -1,17 +1,19 @@
 from django import forms
 
+
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Email', required=True,
-                                widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(max_length=32,
-                                widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-                                required=True)
+    username = forms.CharField(label='', required=True,
+                               widget=forms.TextInput())
+    password = forms.CharField(label='', max_length=32, required=True,
+                               widget=forms.PasswordInput())
+
 
 class RegisterForm(forms.Form):
     username = forms.CharField(required=True,
-                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.CharField(required=True,
                             widget=forms.EmailInput(attrs={'class': 'form-control'}))
     password = forms.CharField(max_length=32,
-                                widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-                                required=True)
+                               widget=forms.PasswordInput(
+                                   attrs={'class': 'form-control'}),
+                               required=True)
