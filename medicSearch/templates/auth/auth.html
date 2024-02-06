@@ -20,29 +20,25 @@
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
   </head>
   <body>
-    <div class="flex h-screen items-center justify-center bg-gray-200">
-      <div class="w-1/2">
+    <div class="flex w-screen h-screen justify-center bg-gray-200">
+      <div>
         <img
+          src="{% static './img/paciente-medico.png' %}"
           alt="Medic Image"
-          class="object-cover h-full w-full rounded-r-lg"
-          width="500"
-          height="500"
-          style="
-            background-image: url('{% static './img/male-doctor-with.jpg' %}');
-          "
+          class="w-full h-full object-cover"
         />
       </div>
-      <div class="w-full h-full max-w-2xl bg-white rounded-lg shadow">
-        <div class="space-y-6 flex items-center justify-center">
-          <form method="post">
+      <div class="w-1/2 bg-white shadow">
+        <div class="w-full h-full flex items-center justify-center">
+          <form method="post" class="w-auto">
             {% csrf_token %}
-            <div class="flex flex-col">
+            <div>
               <label for="{{ form.username.id_for_label }}" class=""
                 >Email:</label
               >
-              {{ form.username }} {{ form.username.errors }}
+              <div>{{ form.username }} {{ form.username.errors }}</div>
               <label for="{{ form.password.id_for_label }}">Senha:</label>
-              {{ form.password }} {{ form.password.errors }}
+              <div>{{ form.password }} {{ form.password.errors }}</div>
               <button
                 type="submit"
                 class="w-full bg-btn-100 rounded-md py-4 my-4 font-medium text-white"
@@ -55,9 +51,13 @@
               >
                 Entrar com o Google
               </button>
-              <p class="font-inter text-sm text-neutral-500 text-center py-4">
+              <p
+                class="font-inter font-light text-sm text-neutral-500 text-center py-4"
+              >
                 Novo no site?
-                <a href="{% url 'register' %}" class="text-neutral-900"
+                <a
+                  href="{% url 'register' %}"
+                  class="font-medium text-neutral-900 pl-2"
                   >Registre-se</a
                 >
               </p>
