@@ -20,81 +20,66 @@
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
   </head>
   <body>
-    <div class="flex w-screen h-screen justify-center bg-gray-200">
-      <div>
-        <img
-          src="{% static './img/paciente-medico.png' %}"
-          alt="Medic Image"
-          class="w-full h-full object-cover"
-        />
-      </div>
-      <div class="w-1/2 bg-white shadow">
-        <div class="w-full h-full flex items-center justify-center">
-          <form method="post" class="w-auto">
-            {% csrf_token %}
-            <div>
-              <label for="{{ form.username.id_for_label }}" class=""
-                >Email:</label
-              >
-              <div>{{ form.username }} {{ form.username.errors }}</div>
-              <label for="{{ form.password.id_for_label }}">Senha:</label>
-              <div>{{ form.password }} {{ form.password.errors }}</div>
-              <button
-                type="submit"
-                class="w-full bg-btn-100 rounded-md py-4 my-4 font-medium text-white"
-              >
-                Entrar
-              </button>
-              <button
-                type="submit"
-                class="w-full border border-neutral-900 rounded-md py-4 my-4 font-medium to-neutral-900"
-              >
-                Entrar com o Google
-              </button>
-              <p
-                class="font-inter font-light text-sm text-neutral-500 text-center py-4"
-              >
-                Novo no site?
-                <a
-                  href="{% url 'register' %}"
-                  class="font-medium text-neutral-900 pl-2"
-                  >Registre-se</a
-                >
-              </p>
+    <div class="w-screen h-screen flex">
+      <!-- imagem lado esquerdo -->
+      <div
+        class="bg-cover bg-center w-3/5"
+        style="background-image: url('{% static 'img/paciente-medico.png' %}')"
+      ></div>
+      <!-- formulario lado direito -->
+      <form method="POST" class="bg-white w-2/5">
+        <div class="h-full flex flex-col justify-center mx-20">
+          <!-- logo -->
+          <a href="/" class="flex justify-center mb-9">
+            <img
+              class="h-[54px]"
+              src="{% static 'img\logo.svg' %}"
+              alt="Logo"
+            />
+            <span class="font-inter font-extrabold text-5xl">medic</span>
+          </a>
+          <!-- form -->
+          <label class="font-inter text-base mb-[10px] ml-3"
+            >{{ form.username.label}}</label
+          >
+          {{ form.username}}
+          <label class="font-inter text-base mb-[10px] ml-3 mt-6"
+            >{{ form.password.label}}</label
+          >
+          {{ form.password}}
+          <div class="flex justify-between mt-7">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember" />
+              <label class="text-sm ml-1">Lembrar senha</label>
             </div>
-          </form>
+            <a href="" class="text-sm text-neutral-500">Esqueceu a senha?</a>
+          </div>
+          <button class="" type="submit">{{button_text}}</button>
         </div>
-      </div>
+      </form>
     </div>
-    <!-- <div>
-      <div>
-        <div>
-          <form method="POST" action="">
-            {% if message is not None %}
-            <div>{{ message.text }}</div>
-
-            <div class="font-inter font-semibold text-4xl">
-              {% endif %} {% csrf_token %}
-              <label>Email</label> <br />
-              <label>Email</label> <br />
-              {% for f in form %}
-            </div>
-            <div>
-              {{ f.label }} {{ f }} {% for error in f.errors %}
-              <div style="display: initial">{{ error }}</div>
-              {% endfor %}
-            </div>
-            {% endfor %}
-            <a
-              href="{{link_href}}"
-              style="display: block; text-align: center; margin-bottom: 20px"
-              >{{link_text}}</a
-            >
-            <button type="submit">{{button_text}}</button>
-          </form>
-        </div>
-      </div>
-    </div> -->
-    {% endblock %}
   </body>
+  <!-- <body>
+    <form method="POST" action="">
+      {% if message is not None %}
+      <div>{{ message.text }}</div>
+
+      <div class="font-inter font-semibold text-4xl">
+        {% endif %} {% csrf_token %} {% for f in form %}
+      </div>
+      <div>
+        {{ f.label }} {{ f }} {% for error in f.errors %}
+        <div style="display: initial">{{ error }}</div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <a
+        href="{{link_href}}"
+        style="display: block; text-align: center; margin-bottom: 20px"
+        >{{link_text}}</a
+      >
+      <button type="submit">{{button_text}}</button>
+    </form>
+  </body>  -->
 </html>
+{% endblock %}

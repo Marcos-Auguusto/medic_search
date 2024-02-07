@@ -9,8 +9,8 @@ def login_patient_view(request):
     loginForm = LoginForm()
     message = None
 
-    # if request.user.is_authenticated:
-    #     return redirect('/patient')
+    if request.user.is_authenticated:
+        return redirect('/home-patient')
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -24,10 +24,10 @@ def login_patient_view(request):
                 login(request, user)
 
                 if user.profile.role == 3:
-                    return redirect('/patient')
+                    return redirect('/home-patient')
                 else:
                     message.error(request, 'Acesso não permitido.')
-                    return redirect('login')
+                    return redirect('login-patient/')
 
     context = {
         'form': loginForm,
@@ -79,9 +79,9 @@ def register_view(request):
         'form': registerForm,
         'message': message,
         'title': 'Registrar',
-        'button_text': 'Registar',
-        'link_text': 'Login',
-        'link_href': '/login'
+        'button_text': 'Registrar',
+        # 'link_text': 'Login',
+        # 'link_href': '  login-patient/'
     }
     return render(request, template_name='auth/auth.html', context=context, status=200)
 
