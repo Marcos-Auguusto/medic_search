@@ -37,7 +37,7 @@ def login_patient_view(request):
         'link_href': '/register'
     }
 
-    return render(request, template_name='auth/auth.html', context=context, status=200)
+    return render(request, template_name='auth/login.html', context=context, status=200)
 
 
 def register_view(request):
@@ -81,9 +81,9 @@ def register_view(request):
         'title': 'Registrar',
         'button_text': 'Registrar',
         # 'link_text': 'Login',
-        # 'link_href': '  login-patient/'
+        'link_href': '/login-patient/'
     }
-    return render(request, template_name='auth/auth.html', context=context, status=200)
+    return render(request, template_name='auth/register.html', context=context, status=200)
 
 
 def logout_view(request):

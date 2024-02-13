@@ -22,13 +22,21 @@
   <body>
     <div class="w-screen h-screen flex">
       <!-- imagem lado esquerdo -->
-      <div
-        class="bg-cover bg-center w-3/5"
-        style="background-image: url('{% static 'img/paciente-medico.png' %}')"
-      ></div>
+      <div class="w-3/5">
+        <div
+          class="w-3/5 h-full bg-gradient-to-t from-bgPrimary-50 to-transparent to-70% z-10 absolute blend-multiply"
+        ></div>
+        <div
+          class="w-full h-full bg-cover bg-center z-0 relative"
+          style="
+            background-image: url('{% static 'img/paciente-medico.png' %}');
+          "
+        ></div>
+      </div>
       <!-- formulario lado direito -->
-      <form method="POST" class="bg-white w-2/5">
+      <form method="POST" class="bg-white w-2/5 shadow-xl z-20">
         <div class="h-full flex flex-col justify-center mx-20">
+          {% csrf_token %}
           <!-- logo -->
           <a href="/" class="flex justify-center mb-9">
             <img
@@ -36,22 +44,18 @@
               src="{% static 'img\logo.svg' %}"
               alt="Logo"
             />
-            <span class="font-inter font-extrabold text-5xl">medic</span>
+            <span class="font-inter font-extrabold text-5xl ml-4">medic</span>
           </a>
           <!-- form -->
           <label class="font-inter text-base mb-[10px] ml-3"
             >{{ form.username.label}}</label
           >
-          <!-- <input
-            type="text"
-            class="bg-gray-50 border border-gray-300 text-gray-900 font-inter text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          /> -->
           {{ form.username}}
-          <label class="font-inter text-base mb-[10px] ml-3 mt-6"
+          <label class="font-inter text-base mb-[10px] ml-3 mt-4"
             >{{ form.password.label}}</label
           >
           {{ form.password}}
-          <div class="flex justify-between mt-7">
+          <div class="flex justify-between mt-5">
             <div class="flex items-center">
               <input
                 class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
@@ -110,31 +114,15 @@
               Entrar com o Google
             </div>
           </button>
+          <div class="flex justify-center font-inter text-sm mt-4">
+            <p class="text-neutral-500">Novo no site?</p>
+            <a href="{{link_href}}" class="font-medium text-neutral-950 ml-1"
+              >Registre-se</a
+            >
+          </div>
         </div>
       </form>
     </div>
   </body>
-  <!-- <body>
-    <form method="POST" action="">
-      {% if message is not None %}
-      <div>{{ message.text }}</div>
-
-      <div class="font-inter font-semibold text-4xl">
-        {% endif %} {% csrf_token %} {% for f in form %}
-      </div>
-      <div>
-        {{ f.label }} {{ f }} {% for error in f.errors %}
-        <div style="display: initial">{{ error }}</div>
-        {% endfor %}
-      </div>
-      {% endfor %}
-      <a
-        href="{{link_href}}"
-        style="display: block; text-align: center; margin-bottom: 20px"
-        >{{link_text}}</a
-      >
-      <button type="submit">{{button_text}}</button>
-    </form>
-  </body>  -->
 </html>
 {% endblock %}

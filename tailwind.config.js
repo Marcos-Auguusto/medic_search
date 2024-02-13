@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         'bgPrimary': {
+          50: 'rgba(5, 97, 218)',
         200: 'rgba(141, 174, 242, 0.71)',
         900: '#8DAEF2',
         },
@@ -38,7 +39,18 @@ module.exports = {
       },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.blend-multiply': {
+          'mix-blend-mode': 'multiply',
+        },
+
+      }
+
+      addUtilities(newUtilities);
+    }
   ]
 }
 
