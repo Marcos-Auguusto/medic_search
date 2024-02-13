@@ -703,10 +703,6 @@ video {
   margin-bottom: 10px;
 }
 
-.mb-\[12px\] {
-  margin-bottom: 12px;
-}
-
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -751,12 +747,12 @@ video {
   margin-top: 1.5rem;
 }
 
-.mt-7 {
-  margin-top: 1.75rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-\[10px\] {
+  margin-top: 10px;
 }
 
 .mt-\[18px\] {
@@ -1314,11 +1310,6 @@ video {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .text-lg {

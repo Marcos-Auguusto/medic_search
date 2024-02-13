@@ -1,37 +1,67 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib import messages
 from django.contrib.auth.models import User
 from medicSearch.forms.AuthForm import LoginForm, RegisterForm
 
 
 def login_patient_view(request):
     loginForm = LoginForm()
-    message = None
 
     if request.user.is_authenticated:
         return redirect('/home-patient')
 
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
         loginForm = LoginForm(request.POST)
 
         if loginForm.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
             user = authenticate(username=username, password=password)
 
             if user is not None:
-                login(request, user)
 
                 if user.profile.role == 3:
+                    login(request, user)
                     return redirect('/home-patient')
+                elif user.profile.role == 2:
+                    messages.error(request, 'Acesso não permitido.')
+                    return redirect('/login-patient')
                 else:
-                    message.error(request, 'Acesso não permitido.')
-                    return redirect('login-patient/')
+                    return redirect('/admin/')
+            else:
+                messages.error(
+                    request, 'Usuário ou senha incorretos. Por favor, tente novamente.')
+                return redirect('/login-patient')
+        else:
+            messages.error(
+                request, 'Por favor, preencha todos os campos corretamente.')
+            return redirect('/login-patient')
+
+        #     if user is not None:
+        #         login(request, user)
+        #         if user.check_password(password):
+        #             messages.error(
+        #                 request, 'Senha incorreta. Por favor, tente novamente.')
+
+        #             if user.profile.role == 3:
+        #                 return redirect('/home-patient')
+        #             else:
+        #                 messages.error(request, 'Acesso não permitido.')
+        #                 return redirect('/')
+        #         else:
+        #             messages.error(
+        #                 request, 'Senha incorreta. Por favor, tente novamente.')
+        #     else:
+        #         messages.error(
+        #             request, 'Usuário não encontrado. Por favor, verifique suas credenciais.')
+        # else:
+        #     messages.error(
+        #         request, 'Por favor, preencha todos os campos corretamente.')
 
     context = {
         'form': loginForm,
-        'message': message,
         'button_text': 'Entrar',
         'link_text': 'Registrar',
         'link_href': '/register'

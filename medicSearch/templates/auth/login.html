@@ -37,6 +37,16 @@
       <form method="POST" class="bg-white w-2/5 shadow-xl z-20">
         <div class="h-full flex flex-col justify-center mx-20">
           {% csrf_token %}
+          <!-- error message -->
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+              {{ message }}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
           <!-- logo -->
           <a href="/" class="flex justify-center mb-9">
             <img
@@ -47,11 +57,11 @@
             <span class="font-inter font-extrabold text-5xl ml-4">medic</span>
           </a>
           <!-- form -->
-          <label class="font-inter text-base mb-[10px] ml-3"
+          <label class="font-inter text-sm mb-[10px] ml-3"
             >{{ form.username.label}}</label
           >
           {{ form.username}}
-          <label class="font-inter text-base mb-[10px] ml-3 mt-4"
+          <label class="font-inter text-sm mb-[10px] ml-3 mt-4"
             >{{ form.password.label}}</label
           >
           {{ form.password}}
@@ -72,6 +82,7 @@
           >
             {{button_text}}
           </button>
+
           <div class="relative mt-6">
             <div class="absolute inset-0 flex items-center">
               <div class="w-full border-t border-gray-300"></div>
