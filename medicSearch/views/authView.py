@@ -39,27 +39,6 @@ def login_patient_view(request):
                 request, 'Por favor, preencha todos os campos corretamente.')
             return redirect('/login-patient')
 
-        #     if user is not None:
-        #         login(request, user)
-        #         if user.check_password(password):
-        #             messages.error(
-        #                 request, 'Senha incorreta. Por favor, tente novamente.')
-
-        #             if user.profile.role == 3:
-        #                 return redirect('/home-patient')
-        #             else:
-        #                 messages.error(request, 'Acesso não permitido.')
-        #                 return redirect('/')
-        #         else:
-        #             messages.error(
-        #                 request, 'Senha incorreta. Por favor, tente novamente.')
-        #     else:
-        #         messages.error(
-        #             request, 'Usuário não encontrado. Por favor, verifique suas credenciais.')
-        # else:
-        #     messages.error(
-        #         request, 'Por favor, preencha todos os campos corretamente.')
-
     context = {
         'form': loginForm,
         'button_text': 'Entrar',
@@ -88,29 +67,25 @@ def register_view(request):
             verifyEmail = User.objects.filter(email=email).first()
 
             if verifyUsername is not None:
-                message = {'type': 'danger',
-                           'text': 'Já existe um usuário com este username!'}
+                messages.error(
+                    request, 'Já existe um usuário com este username!')
+                return redirect('/register')
 
             elif verifyEmail is not None:
-                message = {'type': 'danger',
-                           'text': 'Já existe um usuário com este e-mail!'}
+                messages.error(
+                    request, 'Já existe um usuário com este e-mail!')
+                return redirect('/register')
 
             else:
                 user = User.objects.create_user(username, email, password)
                 if user is not None:
-                    message = {'type': 'success',
-                               'text': 'Conta criada com sucesso!'}
-
-                else:
-                    message = {
-                        'type': 'danger', 'text': 'Um erro ocorreu ao tentar criar o usuário.'}
+                    messages.success(request, 'Conta criada com sucesso!')
+                    return redirect('/register')
 
     context = {
         'form': registerForm,
-        'message': message,
         'title': 'Registrar',
         'button_text': 'Registrar',
-        # 'link_text': 'Login',
         'link_href': '/login-patient/'
     }
     return render(request, template_name='auth/register.html', context=context, status=200)

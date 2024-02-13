@@ -109,7 +109,32 @@
               <div class="mt-[10px]">{{ form.password_confirm}}</div>
             </div>
           </div>
-
+          <!-- alert messages -->
+          {% if messages %}
+          <ul class="mt-4">
+            {% for message in messages %}
+            <!-- prettier-ignore -->
+            <li
+              class="{% if message.tags %}{% if message.tags == 'error' %}flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50
+              {% elif message.tags == 'info' %} flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 
+              {% elif message.tags == 'success' %} flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50{% endif %} {% endif %}"
+            >
+              <svg
+                class="flex-shrink-0 inline w-4 h-4 me-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                />
+              </svg>
+              <span class="font-medium">{{ message }} {% if message.tags == 'success' %} <a class="font-bold" href="{{ link_href }}">Fazer login</a> {% endif %}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
           <button
             class="text-white bg-btn-100 hover:bg-btn-200 focus:ring-4 focus:ring-blue-300 font-inter font-medium rounded-lg text-sm px-5 py-2.5 mt-5"
             type="submit"
@@ -122,10 +147,6 @@
               >Entrar</a
             >
           </div>
-
-          {% if message %}
-          <p class="{{ message.type }}">{{ message.text }}</p>
-          {% endif %}
         </div>
       </form>
     </div>
