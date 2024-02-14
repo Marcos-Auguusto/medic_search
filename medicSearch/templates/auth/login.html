@@ -55,16 +55,27 @@
             >{{ form.password.label}}</label
           >
           {{ form.password}}
-          <div class="flex justify-between mt-5">
-            <div class="flex items-center">
-              <input
-                class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-                type="checkbox"
-                id="remember"
-              />
-              <label class="text-sm ml-1">Lembrar senha</label>
+          <div
+            class="flex items-center justify-between font-inter font-light mt-4 mx-2"
+          >
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="remember"
+                  aria-describedby="remember"
+                  type="checkbox"
+                  class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                />
+              </div>
+              <div class="ml-3 text-sm">
+                <label for="remember" class="text-gray-500 dark:text-gray-300"
+                  >Lembrar senha</label
+                >
+              </div>
             </div>
-            <a href="" class="text-sm text-neutral-500">Esqueceu a senha?</a>
+            <a href="#" class="text-sm font-medium text-btn-200 hover:underline"
+              >Esqueci a senha</a
+            >
           </div>
           <!-- alert messages -->
           {% if messages %}
