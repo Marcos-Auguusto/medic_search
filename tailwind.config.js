@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         'bgPrimary': {
+          50: 'rgba(5, 97, 218)',
         200: 'rgba(141, 174, 242, 0.71)',
         900: '#8DAEF2',
         },
@@ -27,13 +28,29 @@ module.exports = {
           200:'#0451B6',
           300:'#022655',
         },
+        'btn-light': {
+          100:'#e6f0fe',
+          200:'#dae9fd',
+          300:'#b2d1fb',
+        },
         'shadowPrimary': {
         900: 'rgba(136, 163, 220, 1)',
         },
       },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.blend-multiply': {
+          'mix-blend-mode': 'multiply',
+        },
+
+      }
+
+      addUtilities(newUtilities);
+    }
   ]
 }
 

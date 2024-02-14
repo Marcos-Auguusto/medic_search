@@ -31,7 +31,8 @@
           href="{% url 'home' %}"
           class="flex items-center rtl:space-x-reverse"
         >
-          <img class="h-12" src="{% static 'img\logo.svg' %}" alt="Logo" />
+          <img class="h-9 mr-[5px]
+          " src="{% static 'img\logo.svg' %}" alt="Logo" />
           <span class="font-inter font-extrabold text-3xl">medic</span>
         </a>
         <button
@@ -92,7 +93,7 @@
           >
             <!-- User is authenticated -->
             {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}" class=""> Sair </a>
+            <a href="{% url 'logout' %}" class="py-3"> Sair </a>
             {% else %}
             <!-- button login -->
             <button
