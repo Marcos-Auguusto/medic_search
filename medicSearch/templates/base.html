@@ -1,62 +1,213 @@
+{% load compress %}
+<!-- prettierignore -->
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1,  shrink-to-fit=no"/>
-    <link rel="stylesheet" href="{% static 'css/output.css' %}" >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=ZCOOL+XiaoWei&display=swap"rel="stylesheet">
-    <title>Buscar Doutor - {% block title %}{% endblock %}</title>
+      content="width=device-width, initial-scale=1,  shrink-to-fit=no"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Red+Hat+Display:wght@300&family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet"
+    />
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" /> 
+    {% endcompress %}
+
+    <title>Medic - {% block title %}{% endblock %}</title>
   </head>
-  <body class="w-full h-[580px] bg-bgPrimary-200">
-    <header>
-      <nav class="flex items-center fixed top-0 w-full h-14 bg-white p-5">
-        <div class="container flex justify-between items-center mx-20">
-          <div class="flex items-center">
-            <img src="{% static 'img\logo.svg'%}" alt="logo medic" class="h-12">
-          <a href="/" class="font-inter text-3xl text-neutral-900 font-extrabold"> medic</a>
+  <body class="bg-bgPrimary-200">
+    <nav class="bg-white border-gray-200 shadow-lg shadow-colorBlue-100 py-2">
+      <div>
+      <div class="flex flex-wrap items-center justify-between mx-10">
+        <!-- Logo -->
+        <a
+          href="{% url 'home' %}"
+          class="flex items-center rtl:space-x-reverse"
+        >
+          <img class="h-9 mr-[5px]
+          " src="{% static 'img\logo.svg' %}" alt="Logo" />
+          <span class="font-inter font-extrabold text-3xl">medic</span>
+        </a>
+        <button
+          data-collapse-toggle="targetEl"
+          type="button"
+          class="inline-flex p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden md:block hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          aria-controls="triggerEl"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Abra o menu</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <!-- Navigation links -->
+        <div class="w-full block lg:w-auto lg:flex items-center" id="targetEl">
+          <div>
+            <ul
+              class="font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-8 md:mt-0 md:bg-white"
+            >
+              <a
+                href=""
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                >Home</a
+              >
+              <a
+                href="{% url 'home_patient' %}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >Agendamento</a
+              >
+              <a
+                href=""
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >Profissionais</a
+              >
+              <a
+                href=""
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >Sobre nós</a
+              >
+            </ul>
           </div>
-          <ul class="flex space-x-6">
-          <li>
-            <a href="/" class="flex items-center font-inter text-base font-light text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\house-chimney.svg'%}" class="h-[14px] mx-2"></img>Home</a>
-          </li>
-          {% if user.is_authenticated %}
-          <li>
-            <a href="#" class="flex items-center font-inter text-base font-light text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\user.svg'%}" class="h-[14px] mx-2">Perfil</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center font-inter text-base font-light text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\user-pen.svg'%}" class="h-[14px] mx-2"> Editar Perfil</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center font-inter text-base font-light text-neutral-800 hover:text-neutral-400">
-            <img src="{% static 'icons\exit.svg'%}" class="h-[14px] mx-2"> Sair</a>
-          </li>
-          {% else %}
-          <li>
-            <a href="#" class="font-inter text-base font-light text-neutral-800 hover:text-neutral-400">
-              <i></i>Entrar</a>
-          </li>
-          <li>
-            <a href="#" class="font-inter text-base font-light text-neutral-800 hover:text-neutral-400">
-              <i></i>Registrar</a>
-          </li>
+          <div class="w-12"></div>
+          <div
+            class="flex flex-col space-y-3 md:space-x-3 md:space-y-0 justify-center md:flex-row lg:w-auto py-3"
+          >
+            <!-- User is authenticated -->
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="py-3"> Sair </a>
+            {% else %}
+            <!-- button login -->
+            <button
+              type="button"
+              class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
+            >
+              <a href="#"> Portal do Médico </a>
+            </button>
+
+            <button
+              type="button"
+              class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
+            >
+              <a href="{% url 'login_patient' %}"> Portal do Paciente </a>
+            </button>
+          </div>
+
           {% endif %}
-        </ul>
-      </div>       
-      </nav>
-    </header>
-    <div class="flex justify-center mt-[100px]">{% block content %}{% endblock %}</div>
-    <footer>
-      <div></div>
+        </div>
+      </div>
+    </nav>
+    <section>{% block content %}{% endblock %}</section>
+    <footer class="bg-colorBlue-100 w-full h-[449px]">
+      <div class="flex flex-row justify-between text-white pt-20 mx-28">
+        <div class="flex flex-items-center  pr-32">
+          <img class="h-12 " src="{% static 'img\logo.svg' %}" alt="Logo" />
+          <span class="font-inter font-extrabold text-4xl ">medic</span>
+        </div>
+        <div class="mb-6 w-full lg:w-1/4">
+          <h5 class="mb-2 text-2xl font-inter font-medium">Central <br> de ajuda</h5>
+          <ul class=" font-inter font-light space-y-6 pt-6">
+            <li>Perguntas Frequentes</li>
+            <li>Fale Conosco</li>
+            <li>Ouvidoria</li>
+          </ul>
+        </div>
+        <div class="mb-6 w-full lg:w-1/4">
+          <h5 class="mb-2 text-2xl font-inter font-medium">Atendimento <br> à convênios</h5>
+          <ul class=" font-inter font-light space-y-6 pt-6">
+            <li>Planos Atendidos</li>
+            <li>Especialidades</li>
+            <li>Agendamentos de <br> Consulta</li>
+          </ul>
+        </div>
+        <div class="w-full lg:w-1/4">
+          <h5 class="mb-2 text-2xl font-inter font-medium">Responsabilidade <br> social</h5>
+          <ul class=" font-inter font-light space-y-6 pt-6">
+            <li>Ações Sociais</li>
+            <li>Voluntariado</li>
+            <li>Faça sua doação</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="mt-8 border-t border-[#69b3ff] pt-4 mx-28 text-white text-opacity-40"
+      >
+        <div class="flex flex-wrap items-center justify-between">
+          <div class="mb-4 text-sm">Copyright ©2023 All rights reserved</div>
+          <div class="flex space-x-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-6 w-6"
+            >
+              <path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-6 w-6"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-6 w-6"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
     </footer>
     {% block scripts %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="{% static 'js\selectButtons.js' %}"></script>
   </body>
 </html>

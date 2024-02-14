@@ -1,60 +1,8 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %}Início{% endblock %}
+<!-- prettier-ignore -->
+{% extends "base.html" %} 
+{% load static %} 
+{% block title %} Início {% endblock %}
 {% block content %}
 
-<div >
-    <div>
-      <div>
-        <div class="w-[864px] h-[377px] my-11 bg-white rounded-xl shadow-2xl shadow-shadowPrimary-900">
-            <form  action="{% url 'medics' %}" method="GET">
-                <div>
-                    <h3 class="font-inter font-semibold text-3xl text-center text-neutral-900 ">Encontre um médico</h3>
-                    <div class="w-[474px] h-10  border-gray-100 border-2 rounded">
-                        <input class="flex items-center " type="text" name="name" placeholder="Buscar por nome">
-                    </div> 
-                </div>
-                    <div>
-                    <div>
-                        <select class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" name="speciality">
-                            <option value="0" selected disabled>Selecione uma especialidade</option>
-                            <option value="1">Neurocirugia</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select name="state">
-                            <option value="0" selected disabled>Selecione um estado</option>
-                            <option value="1">Rio de Janeiro</option>
-                        </select>
-                    </div>
-                    </div>
-                    <div>
-                    <div>
-                        <select name="city">
-                            <option value="0" selected disabled>Selecione uma cidade</option>
-                            <option value="1">Rio de Janeiro</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select name="neighborhood">
-                            <option value="0" selected disabled>Selecione um bairro</option>
-                            <option value="1">Botafogo</option>
-                        </select>
-                    </div>
-                    </div>
-                    <div>
-                    <div class="flex justify-center items-center w-48 h-14 bg-indigo-400 rounded-md">
-                        <button class="font-inter font-bold text-white" type="submit">Buscar médico</button>
-                    </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-      </div>
-    </div>
-</div>
 
-{% endblock %}
-
-{% block scripts %}
-{% endblock  %}
+{% endblock %} {% block scripts %} {% endblock %}
