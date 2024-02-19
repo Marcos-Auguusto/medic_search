@@ -38,20 +38,6 @@ module.exports = {
         },
       },
   },
-  plugins: [
-    require('flowbite/plugin'),
-    
-    function({ addUtilities }) {
-      const newUtilities = {
-        '.blend-multiply': {
-          'mix-blend-mode': 'multiply',
-        },
-
-      }
-
-      addUtilities(newUtilities);
-    }
-  ]
 }
 
 }

@@ -1,6 +1,6 @@
 from medicSearch.models import *
 
-class dayWeek(models.Model):
+class DayWeek(models.Model):
     name = models.CharField(null=False, max_length=20)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

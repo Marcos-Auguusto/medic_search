@@ -1,6 +1,6 @@
 from medicSearch.models import *
 
-class rating(models.Model):
+class Rating(models.Model):
     user = models.ForeignKey(User, related_name='avaliou',
                                 on_delete=models.CASCADE)
     user_rated = models.ForeignKey(User, related_name='avaliado',

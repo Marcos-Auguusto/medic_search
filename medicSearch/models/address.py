@@ -1,7 +1,7 @@
 from medicSearch.models import *
 
-class address(models.Model):
-    neighborhood = models.ForeignKey(neighborhood, null=True,
+class Address(models.Model):
+    neighborhood = models.ForeignKey(Neighborhood, null=True,
 related_name='neighborhood', on_delete=models.SET_NULL)
     name = models.CharField(null=False, max_length=100)
     address = models.CharField(null=False, max_length=255)
@@ -9,7 +9,7 @@ related_name='neighborhood', on_delete=models.SET_NULL)
     longitude = models.DecimalField(max_digits=9, decimal_places=7)
     opening_time = models.TimeField()
     closing_time = models.TimeField()
-    days_week = models.ManyToManyField(dayWeek, blank=True,
+    days_week = models.ManyToManyField(DayWeek, blank=True,
 related_name='days_week')
     phone = models.CharField(null=True, blank=True, max_length=50)
     status = models.BooleanField(default=True)

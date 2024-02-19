@@ -1,16 +1,5 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-<<<<<<< HEAD
-
-
-class UserModelTestClass(TestCase):
-    def setUp(self):
-        User.objects.create_user(username='test', password='test')
-    
-    def test_user_exist(self):
-        user = User.objects.first()
-        self.assertIsNotNone(user)
-=======
 from medicSearch.models import Profile
 
 
@@ -32,4 +21,4 @@ class ProfileModelTest(TestCase):
         user.profile.role = 2
         user.profile.save()
         self.assertEqual(user.profile.role, 2)
->>>>>>> 150a09b291a41e61e4ae17ab4fa027b875e9f601
+

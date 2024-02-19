@@ -1,7 +1,7 @@
 from medicSearch.models import *
 
-class city(models.Model):
-    state = models.ForeignKey(state, null=True, related_name='state',
+class City(models.Model):
+    state = models.ForeignKey(State, null=True, related_name='state',
 on_delete= models.SET_NULL)
     name = models.CharField(null=False, max_length=20)
     status = models.BooleanField(default=True)

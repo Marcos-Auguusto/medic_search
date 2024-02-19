@@ -1,5 +1,6 @@
 from medicSearch.models import *
 from django.db.models import Sum, Count
+from .rating import Rating
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -10,15 +11,15 @@ class Profile(models.Model):
     token = models.CharField(max_length=255, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     favorites = models.ManyToManyField(User, null=True, blank=True, related_name='favorites')
-    specialties = models.ManyToManyField(speciality, null=True, blank=True, related_name='specialties')
-    addresses = models.ManyToManyField(address, null=True, blank=True, related_name='addresses')
+    specialties = models.ManyToManyField(Speciality, null=True, blank=True, related_name='specialties')
+    addresses = models.ManyToManyField(Address, null=True, blank=True, related_name='addresses')
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         try:
             if created:
                 Profile.objects.create(user=instance)
-        except:
+        except:ck
             pass
 
     @receiver(post_save, sender=User)
@@ -29,9 +30,8 @@ class Profile(models.Model):
             pass
 
     def show_scoring_average(self):
-        from .rating import rating
         try:
-            ratings = rating.objects.filter(user_rated=self.user).aggregate(Sum('value'),
+            ratings = Rating.objects.filter(user_rated=self.user).aggregate(Sum('value'),
                                                                             Count('user'))
             if ratings['user__count'] > 0:
                 scoring_average = ratings['value__sum'] / ratings['user__count']
@@ -46,7 +46,6 @@ class Profile(models.Model):
         return Profile.objects.filter(user__id__in=ids)
     
     def show_ratings(self):
-        from .rating import rating
         return rating.objects.filter(user_rated=self.user)
    
     def __str__(self):

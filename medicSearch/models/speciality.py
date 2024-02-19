@@ -1,6 +1,6 @@
 from medicSearch.models import *
 
-class speciality(models.Model):
+class Speciality(models.Model):
     name = models.CharField(null=False, max_length=100)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -7,9 +7,172 @@
 <section class="w-full h-[651px] bg-bgPrimary-200 relative z-10">
   <div
     class="bg-cover bg-center w-full h-full absolute z-0"
-    style="background-image: url('{% static './img/male-doctor-with.jpg' %}')"
+    style="background-image: url('{% static './img/search-doctor.png' %}')"
   ></div>
-  <div class="absolute z-10 right-0 flex justify-end w-full">
+  <div class="flex justify-center">
+    <form
+      class="w-[527px] h-[507px] bg-white rounded-xl shadow-xl mt-12 absolute z-20 flex items-center justify-center"
+      action="{% url 'medics' %}"
+      method="GET"
+    >
+      <div class="max-w-[527px] flex flex-col items-center mx-12">
+        <h3 class="font-inter font-semibold text-4xl mb-5">
+          Encontre um médico
+        </h3>
+        <div class="w-full space-y-4">
+          <div class="flex">
+            <div class="relative w-full">
+              <input
+                type="search"
+                id="search-dropdown"
+                class="border border-gray-300 text-gray-900 font-inter text-sm rounded-lg focus:border-blue-500 focus:ring-2 w-full p-2.5"
+                placeholder="Buscar por nome"
+                required
+              />
+              <button
+                type="submit"
+                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-neutral-400 focus:ring-4 focus:outline-none focus:ring-blue-300"
+              >
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+                <span class="sr-only">Search</span>
+              </button>
+            </div>
+          </div>
+          <div class="relative">
+            <select
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+            >
+              <option selected disabled>Selecione uma especialidade</option>
+              <option value="1"></option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pointer-events-none px-3"
+            >
+              <svg
+                class="w-3 h-3 text-gray-400 dark:text-whit"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 8"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="relative">
+            <select
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+            >
+              <option selected disabled>Selecione um Bairro</option>
+              <option value="1"></option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pointer-events-none px-3"
+            >
+              <svg
+                class="w-3 h-3 text-gray-400 dark:text-whit"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 8"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="relative">
+            <select
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+            >
+              <option selected disabled>Selecione uma Cidade</option>
+              <option value="1"></option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pointer-events-none px-3"
+            >
+              <svg
+                class="w-3 h-3 text-gray-400 dark:text-whit"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 8"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="relative">
+            <select
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+            >
+              <option selected disabled>Selecione um Estado</option>
+              <option value="1"></option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pointer-events-none px-3"
+            >
+              <svg
+                class="w-3 h-3 text-gray-400 dark:text-whit"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 8"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <button
+            class="w-full text-white bg-btn-100 hover:bg-btn-200 focus:ring-4 focus:ring-blue-300 font-inter font-medium rounded-lg text-sm px-5 py-2.5 mt-[18px]"
+            type="submit"
+          >
+            Buscar médico
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- <div class="absolute z-10 right-0 flex justify-end w-full">
     <form
       class="flex w-[527px] h-[507px] bg-white rounded-3xl shadow-xl mt-10 mr-[120px] items-center justify-center"
       action="{% url 'medics' %}"
@@ -90,5 +253,6 @@
       </div>
     </form>
   </div>
+   -->
 </section>
 {% endblock %} {% block scripts %} {% endblock %}
