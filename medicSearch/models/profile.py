@@ -19,7 +19,7 @@ class Profile(models.Model):
         try:
             if created:
                 Profile.objects.create(user=instance)
-        except:ck
+        except:
             pass
 
     @receiver(post_save, sender=User)
@@ -46,7 +46,7 @@ class Profile(models.Model):
         return Profile.objects.filter(user__id__in=ids)
     
     def show_ratings(self):
-        return rating.objects.filter(user_rated=self.user)
+        return Rating.objects.filter(user_rated=self.user)
    
     def __str__(self):
         return '{}'.format(self.user.username)
