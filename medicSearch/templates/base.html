@@ -17,7 +17,8 @@
       rel="stylesheet"
     />
     {% compress css %}
-    <link rel="stylesheet" href="{% static 'css/output.css' %}" /> 
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/CSSReset.css' %}" />
     {% endcompress %}
 
     <title>Medic - {% block title %}{% endblock %}</title>
@@ -63,26 +64,26 @@
         <div class="w-full block lg:w-auto lg:flex items-center" id="targetEl">
           <div>
             <ul
-              class="font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-8 md:mt-0 md:bg-white"
+              class="font-inter font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-16 md:mt-0 md:bg-white"
             >
               <a
                 href=""
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                class="block py-2  text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                 >Home</a
               >
               <a
                 href="{% url 'home_patient' %}"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 >Agendamento</a
               >
               <a
                 href=""
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 >Profissionais</a
               >
               <a
                 href=""
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 >Sobre nós</a
               >
             </ul>

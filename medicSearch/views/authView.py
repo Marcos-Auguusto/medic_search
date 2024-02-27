@@ -37,7 +37,7 @@ def login_patient_view(request):
         else:
             messages.error(
                 request, 'Por favor, preencha todos os campos corretamente.')
-            return redirect('/login-patient')
+            return redirect('/login-patient/')
 
     context = {
         'form': loginForm,
@@ -51,7 +51,6 @@ def login_patient_view(request):
 
 def register_view(request):
     registerForm = RegisterForm()
-    message = None
 
     if request.user.is_authenticated:
         return redirect('/')
