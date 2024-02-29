@@ -45,25 +45,36 @@ def edit_profile(request):
     if request.method == 'POST':
         profileForm = UserProfileForm(request.POST, request.FILES, instance=profile)
         userForm = UserForm(request.POST, instance=request.user)
-        verifyEmail = Profile.objects.filter(user__email=request.POST['email']) \
-            .exclude(user__id=request.user.id).first()
-        emailUnused = verifyEmail is None
+        if request.POST['email']:
+            verifyEmail = Profile.objects.filter(user__email=request.POST['email']) \
+                .exclude(user__id=request.user.id).first()
+            emailUnused = verifyEmail is None
+        else:
+            emailUnused = True
 
     else:
         profileForm = UserProfileForm(instance=profile)
         userForm = UserForm(instance=request.user)
     
-    if profileForm.is_valid() and userForm.is_valid() and emailUnused:
-        profileForm.save()
-        userForm.save()
-        messages.success(request, 'Dados atualizados com sucesso')
-
+    if request.POST.get('email') is not None:
+        if profileForm.is_valid() and userForm.is_valid() and emailUnused:
+            profileForm.save()
+            userForm.save()
+            messages.success(request, 'Dados atualizados com sucesso')
+        else:
+            if request.method == 'POST':
+                if emailUnused:
+                    messages.error(request, 'Dados inválidos')
+                else:
+                    messages.error(request, 'E-mail já usado por outro usuário')
     else:
-        if request.method == 'POST':
-            if emailUnused:
+        if profileForm.is_valid() and userForm.is_valid():
+            profileForm.save()
+            userForm.save()
+            messages.success(request, 'Dados atualizados com sucesso')
+            
+            if request.method == 'POST':
                 messages.error(request, 'Dados inválidos')
-            else:
-                messages.error(request, 'E-mail já usado por outro usuário')
 
     context = {
         'profileForm': profileForm,
