@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from medicSearch.models import Profile
 from django.core.paginator import Paginator
 from medicSearch.forms.UserProfileForm import UserProfileForm, UserForm
+from django.contrib import messages
 
 def list_profile_view(request, id=None):
     profile = None   
@@ -35,19 +36,17 @@ def list_profile_view(request, id=None):
         'ratings': ratings,
     }
 
-    return render(request, template_name='profile.html',
-context=context, status=200)
+    return render(request, template_name='profile.html', context=context, status=200)
 
 def edit_profile(request):
     profile = get_object_or_404(Profile, user=request.user)
     emailUnused = True
-    message = None
 
     if request.method == 'POST':
         profileForm = UserProfileForm(request.POST, request.FILES, instance=profile)
         userForm = UserForm(request.POST, instance=request.user)
-        verifyEmail = Profile.objects.filter(user__email=request
-.POST['email']).exclude(user__id=request.user.id).first()
+        verifyEmail = Profile.objects.filter(user__email=request.POST['email']) \
+            .exclude(user__id=request.user.id).first()
         emailUnused = verifyEmail is None
 
     else:
@@ -57,19 +56,18 @@ def edit_profile(request):
     if profileForm.is_valid() and userForm.is_valid() and emailUnused:
         profileForm.save()
         userForm.save()
-        message = { 'type': 'success', 'text': 'Dados atualizados com sucesso'}
+        messages.success(request, 'Dados atualizados com sucesso')
 
     else:
         if request.method == 'POST':
             if emailUnused:
-                message = {'type':'danger', 'text':'Dados inválidos'}
+                messages.error(request, 'Dados inválidos')
             else:
-                message = {'type': 'warning', 'text':'E-mail já usado por outro usuário'}
+                messages.error(request, 'E-mail já usado por outro usuário')
 
     context = {
         'profileForm': profileForm,
         'userForm': userForm,
-        'message': message 
     }
 
     return render(request, template_name='user/profile.html', context=context, status=200)
