@@ -25,8 +25,8 @@ class UserForm(ModelForm):
         model = User
         fields = ['username', 'email', 'first_name', 'last_name']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'})
+            'username': forms.TextInput(),
+            'email': forms.EmailInput(),
+            'first_name': forms.TextInput(),
+            'last_name': forms.TextInput(),
         }

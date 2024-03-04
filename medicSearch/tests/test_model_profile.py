@@ -29,6 +29,7 @@ class ProfileModelTest(TestCase):
         user.profile.save()
         self.assertEqual(user.profile.role, 2)
 
+    # model rating tests
     def test_show_scoring_average_with_ratings(self):
         user = User.objects.get(username='testuser')
         user_rated = User.objects.get(username='testuser_rated')

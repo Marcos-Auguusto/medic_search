@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from medicSearch.models import Profile
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 def list_medics_view(request):
     name = request.GET.get('name')
@@ -56,17 +57,16 @@ def add_favorite_view(request):
         medic = Profile.objects.filter(user_id=id).first()
         profile.favorites.add(medic.user)
         Profile.save()
-        msg = 'Favorito adicionado com sucesso'
-        _type = 'success'
+        messages.success(request, 'Favorito adicionado com sucesso')
     except Exception as e:
         print('Erro %s' % e)
-        msg = 'Um erro ocorreu ao salvar o médico nos favoritos'
-        _type = 'danger'
+        messages.error(request, 'Um erro ocorreu ao salvar o médico nos favoritos')
     
     if page:
         arguments = '?page=%s' % (page)
     else:
         arguments = '?page=1'
+
     if name:
         arguments += '&name=%s' % name
     if speciality:
@@ -77,7 +77,7 @@ def add_favorite_view(request):
         arguments += '&city=%s' % city
     if state:
         arguments += '&state=%s' % state
-    arguments += '&msg=%s&type=%s' % (msg, _type)
+    arguments += '&msg=%s&type=%s' % (messages)
 
     return redirect(to='/medic/%s' % arguments)
 
@@ -90,18 +90,16 @@ def remove_favorite_view(request):
         medic = Profile.objects.filter(user__id=id).first()
         profile.favorites.remove(medic.user)
         profile.save()
-        msg = 'Favorito removido com sucesso.'
-        _type = 'success'
+        messages.success(request, 'Favorito removido com sucesso.')
     except Exception as e:
         print('Erro %s' % e)
-        msg = 'Um erro ocorreu ao remover o médico nos favoritos.'
-        _type = 'danger'
+        messages.error(request, 'Um erro ocorreu ao remover o médico nos favoritos.')
     
     if page:
         arguments = '?page=%s' % (page)
     else:
         arguments = '?page=1'
 
-    arguments += '&msg=%s&type=%s' % (msg, _type)
+    arguments += '&msg=%s&type=%s' % (messages)
 
     return redirect(to='/profile/%s' % arguments)

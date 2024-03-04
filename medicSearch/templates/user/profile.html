@@ -22,20 +22,16 @@
         <div>
           {% csrf_token %} {% for f in userForm %} {% if not f.is_hidden %}
           <div>
-            {{ f.label }} {{ f }} {% for error in f.errors %}
+            {{ f.label }} {{ f }}
             <div style="display: initial">
-              {{ error }}
             </div>
-            {% endfor %}
           </div>
           {% else %} {{ f }} {% endif %} {% endfor %} {% for f in profileForm %}
           {% if not f.is_hidden %}
           <div>
-            {{ f.label }} {{ f }} {% for error in f.errors %}
+            {{ f.label }} {{ f }}
             <div style="display: initial">
-              {{ error }}
             </div>
-            {% endfor %}
           </div>
           {% else %} {{ f }} {% endif %} {% endfor %}
         </div>
