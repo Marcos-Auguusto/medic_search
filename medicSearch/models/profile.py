@@ -9,7 +9,7 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     token = models.CharField(max_length=255, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to='avatars/', null=True, blank=True)
     favorites = models.ManyToManyField(User, null=True, blank=True, related_name='favorites')
     specialties = models.ManyToManyField(Speciality, null=True, blank=True, related_name='specialties')
     addresses = models.ManyToManyField(Address, null=True, blank=True, related_name='addresses')
