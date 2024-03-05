@@ -18,197 +18,253 @@
     />
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/CSSReset.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/CSSReset.css' %}"
+    />
     {% endcompress %}
 
     <title>Medic - {% block title %}{% endblock %}</title>
   </head>
   <body class="bg-bgPrimary-200">
-    <nav class="bg-white border-gray-200 shadow-lg shadow-colorBlue-100 py-2">
+    <nav
+      class="w-full bg-white border-gray-200 shadow-lg shadow-neutral-900/5 py-2 fixed z-40"
+    >
       <div>
-      <div class="flex flex-wrap items-center justify-between mx-10">
-        <!-- Logo -->
-        <a
-          href="{% url 'home' %}"
-          class="flex items-center rtl:space-x-reverse"
+        <div
+          class="flex flex-wrap items-center justify-between lg:mx-[88px] mx-10"
         >
-          <img class="h-9 mr-[5px]
-          " src="{% static 'img\logo.svg' %}" alt="Logo" />
-          <span class="font-inter font-extrabold text-3xl">medic</span>
-        </a>
-        <button
-          data-collapse-toggle="targetEl"
-          type="button"
-          class="inline-flex p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden md:block hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-          aria-controls="triggerEl"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Abra o menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
+          <!-- Logo -->
+          <a
+            href="{% url 'home' %}"
+            class="flex items-center rtl:space-x-reverse"
           >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
+            <img
+              class="h-9 mr-[5px]"
+              src="{% static 'img\logo.svg' %}"
+              alt="Logo"
             />
-          </svg>
-        </button>
-        <!-- Navigation links -->
-        <div class="w-full block lg:w-auto lg:flex items-center" id="targetEl">
-          <div>
-            <ul
-              class="font-inter font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-16 md:mt-0 md:bg-white"
-            >
-              <a
-                href=""
-                class="block py-2  text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-                >Home</a
-              >
-              <a
-                href="{% url 'home_patient' %}"
-                class="block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-                >Agendamento</a
-              >
-              <a
-                href=""
-                class="block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-                >Profissionais</a
-              >
-              <a
-                href=""
-                class="block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-                >Sobre nós</a
-              >
-            </ul>
-          </div>
-          <div class="w-12"></div>
-          <div
-            class="flex flex-col space-y-3 md:space-x-3 md:space-y-0 justify-center md:flex-row lg:w-auto py-3"
+            <span class="font-inter font-extrabold text-3xl">medic</span>
+          </a>
+          <button
+            data-collapse-toggle="targetEl"
+            type="button"
+            class="inline-flex p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden md:block hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="triggerEl"
+            aria-expanded="false"
           >
-            <!-- User is authenticated -->
-            {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}" class="py-3"> Sair </a>
-            {% else %}
-            <!-- button login -->
-            <button
-              type="button"
-              class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
-            >
-              <a href="#"> Portal do Médico </a>
-            </button>
-
-            <button
-              type="button"
-              class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
-            >
-              <a href="{% url 'login_patient' %}"> Portal do Paciente </a>
-            </button>
-          </div>
-
-          {% endif %}
-        </div>
-      </div>
-    </nav>
-    <section>{% block content %}{% endblock %}</section>
-    <footer class="bg-colorBlue-100 w-full h-[449px]">
-      <div class="flex flex-row justify-between text-white pt-20 mx-28">
-        <div class="flex flex-items-center  pr-32">
-          <img class="h-12 " src="{% static 'img\logo.svg' %}" alt="Logo" />
-          <span class="font-inter font-extrabold text-4xl ">medic</span>
-        </div>
-        <div class="mb-6 w-full lg:w-1/4">
-          <h5 class="mb-2 text-2xl font-inter font-medium">Central <br> de ajuda</h5>
-          <ul class=" font-inter font-light space-y-6 pt-6">
-            <li>Perguntas Frequentes</li>
-            <li>Fale Conosco</li>
-            <li>Ouvidoria</li>
-          </ul>
-        </div>
-        <div class="mb-6 w-full lg:w-1/4">
-          <h5 class="mb-2 text-2xl font-inter font-medium">Atendimento <br> à convênios</h5>
-          <ul class=" font-inter font-light space-y-6 pt-6">
-            <li>Planos Atendidos</li>
-            <li>Especialidades</li>
-            <li>Agendamentos de <br> Consulta</li>
-          </ul>
-        </div>
-        <div class="w-full lg:w-1/4">
-          <h5 class="mb-2 text-2xl font-inter font-medium">Responsabilidade <br> social</h5>
-          <ul class=" font-inter font-light space-y-6 pt-6">
-            <li>Ações Sociais</li>
-            <li>Voluntariado</li>
-            <li>Faça sua doação</li>
-          </ul>
-        </div>
-      </div>
-
-      <div
-        class="mt-8 border-t border-[#69b3ff] pt-4 mx-28 text-white text-opacity-40"
-      >
-        <div class="flex flex-wrap items-center justify-between">
-          <div class="mb-4 text-sm">Copyright ©2023 All rights reserved</div>
-          <div class="flex space-x-4">
+            <span class="sr-only">Abra o menu</span>
             <svg
+              class="w-5 h-5"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="h-6 w-6"
+              viewBox="0 0 17 14"
             >
               <path
-                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-              ></path>
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
             </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="h-6 w-6"
+          </button>
+          <!-- Navigation links -->
+          <div
+            class="w-full block lg:w-auto lg:flex items-center"
+            id="targetEl"
+          >
+            <div>
+              <ul
+                class="font-inter font-medium text-base flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-8 md:mt-0 md:bg-white"
+              >
+                <a
+                  href="{% url 'home' %}"
+                  class="{% if request.resolver_match.url_name == 'home' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  >Home</a
+                >
+                <a
+                  href="{% url 'home_patient' %}"
+                  class="{% if request.resolver_match.url_name == 'home_patient' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  >Agendar consulta</a
+                >
+                {% if user.is_authenticated %}
+                <a
+                  href=""
+                  class="{% if request.resolver_match.url_name == 'minhas_consultas' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  >Minhas consultas</a
+                >
+                {% endif %}
+                <a
+                  href=""
+                  class="{% if request.resolver_match.url_name == 'profissionais' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  >Profissionais</a
+                >
+                <a
+                  href=""
+                  class="{% if request.resolver_match.url_name == 'sobre_nos' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  >Sobre nós</a
+                >
+              </ul>
+            </div>
+            <div class="w-12"></div>
+            <div
+              class="flex flex-col space-y-3 md:space-x-3 md:space-y-0 justify-center md:flex-row lg:w-auto py-3"
             >
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="h-6 w-6"
-            >
-              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
+              <!-- User is authenticated -->
+              {% if user.is_authenticated %}
+              <div class="flex items-center gap-4">
+                {% if user.profile.image %}
+                <img
+                  class="w-10 h-10 rounded-full"
+                  src="{{ user.profile.image.url }}"
+                  alt="{{ user.username }}'s avatar"
+                />
+                {% else %}
+                <img
+                  class="w-10 h-10 rounded-full"
+                  src="{% static 'img/default_avatar.png' %}"
+                  alt="Default avatar"
+                />
+                {% endif %}
+                <div class="font-medium dark:text-white">
+                  <div>{{ user.username }}</div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400">
+                    {{ user.email }}
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <!-- button login -->
+              <button
+                type="button"
+                class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
+              >
+                <a href="#"> Portal do Médico </a>
+              </button>
+
+              <button
+                type="button"
+                class="font-inter text-sm font-medium text-colorBlue-100 hover:text-white border border-colorBlue-100 rounded-md hover:bg-colorBlue-100 py-3 px-4"
+              >
+                <a href="{% url 'login_patient' %}"> Portal do Paciente </a>
+              </button>
+            </div>
+            {% endif %}
           </div>
         </div>
+    </nav>   
+        <section class="lg:pt-20">{% block content %}{% endblock %}</section>
+        <footer class="bg-colorBlue-100 w-full h-[449px]">
+          <div class="flex flex-row justify-between text-white pt-20 mx-28">
+            <div class="flex flex-items-center pr-32">
+              <img class="h-12" src="{% static 'img\logo.svg' %}" alt="Logo" />
+              <span class="font-inter font-extrabold text-4xl">medic</span>
+            </div>
+            <div class="mb-6 w-full lg:w-1/4">
+              <h5 class="mb-2 text-2xl font-inter font-medium">
+                Central <br />
+                de ajuda
+              </h5>
+              <ul class="font-inter font-light space-y-6 pt-6">
+                <li>Perguntas Frequentes</li>
+                <li>Fale Conosco</li>
+                <li>Ouvidoria</li>
+              </ul>
+            </div>
+            <div class="mb-6 w-full lg:w-1/4">
+              <h5 class="mb-2 text-2xl font-inter font-medium">
+                Atendimento <br />
+                à convênios
+              </h5>
+              <ul class="font-inter font-light space-y-6 pt-6">
+                <li>Planos Atendidos</li>
+                <li>Especialidades</li>
+                <li>
+                  Agendamentos de <br />
+                  Consulta
+                </li>
+              </ul>
+            </div>
+            <div class="w-full lg:w-1/4">
+              <h5 class="mb-2 text-2xl font-inter font-medium">
+                Responsabilidade <br />
+                social
+              </h5>
+              <ul class="font-inter font-light space-y-6 pt-6">
+                <li>Ações Sociais</li>
+                <li>Voluntariado</li>
+                <li>Faça sua doação</li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 border-t border-[#69b3ff] pt-4 mx-28 text-white text-opacity-40"
+          >
+            <div class="flex flex-wrap items-center justify-between">
+              <div class="mb-4 text-sm">
+                Copyright ©2023 All rights reserved
+              </div>
+              <div class="flex space-x-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-6 w-6"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-6 w-6"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-6 w-6"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </footer>
+        {% block scripts %}{% endblock %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+        <script src="{% static 'js\selectButtons.js' %}"></script>
       </div>
-      
-    </footer>
-    {% block scripts %}{% endblock %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    <script src="{% static 'js\selectButtons.js' %}"></script>
   </body>
 </html>
