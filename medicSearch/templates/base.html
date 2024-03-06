@@ -135,7 +135,8 @@
                       {{ user.email }}
                     </div>
                   </div>
-                  <div id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="pl-2 mt-6">
+                  <div id="chevronBtn" class="relative inline-block mt-6 pl-2"
+                  >
                     <svg
                       class="w-3 h-3 text-gray-400 dark:text-whit"
                       aria-hidden="true"
@@ -151,17 +152,17 @@
                         d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
                       />
                     </svg>
-                  </div>
-              </div>
-              <!-- Dropdown menu -->
-              <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-b-lg w-44">
-                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
-                    <li>
-                      <a href="{% url 'edit_profile' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar perfil</a>
-                    </li>
-                  </ul>
-                  <div class="py-1">
-                    <a href="{% url 'logout'%}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sair</a>
+                    <!-- Dropdown menu -->
+                    <div id="userDropdownMenu" class="absolute origin-top-right right-0  mt-8 z-10 hidden bg-white divide-y divide-gray-100 rounded-b-lg w-44">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
+                          <li>
+                            <a href="{% url 'edit_profile' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar perfil</a>
+                          </li>
+                        </ul>
+                        <div class="py-1">
+                          <a href="{% url 'logout'%}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sair</a>
+                        </div>
+                    </div>
                   </div>
               </div>
               {% else %}
@@ -292,7 +293,8 @@
         </footer>
         {% block scripts %}{% endblock %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-        <script src="{% static 'js\selectButtons.js' %}"></script>
+        <!-- <script src="{% static 'js\selectButtons.js' %}"></script> -->
+        <script src="{% static 'js\dropdown.js' %}"></script>
       </div>
   </body>
 </html>
