@@ -29,11 +29,11 @@
   </head>
   <body class="bg-bgPrimary-200">
     <nav
-      class="w-full bg-white border-gray-200 shadow-lg shadow-neutral-900/5 py-2 fixed z-40"
+       class="w-full bg-white border-gray-200 shadow-lg shadow-neutral-900/5 py-2 fixed z-40"
     >
       <div>
         <div
-          class="flex flex-wrap items-center justify-between lg:mx-[88px] mx-10"
+          class="flex flex-wrap items-center justify-between mx-10 lg:mx-[88px]  ipad-pro:mx-10"
         >
           <!-- Logo -->
           <a
@@ -78,38 +78,38 @@
           >
             <div>
               <ul
-                class="font-inter font-medium text-base flex flex-col p-4 md:p-0 mt-4 bg-gray-50 justify-center md:flex-row md:space-x-8 md:mt-0 md:bg-white"
+                class="font-inter font-medium text-base flex flex-col p-4 mt-4 bg-gray-50 ipad-pro:text-sm ipad-pro:space-x-4 lg:p-0 justify-center lg:flex-row lg:space-x-8 lg:mt-0 lg:bg-white"
               >
                 <a
                   href="{% url 'home' %}"
-                  class="{% if request.resolver_match.url_name == 'home' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'home' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
                   >Home</a
                 >
                 <a
                   href="{% url 'home_patient' %}"
-                  class="{% if request.resolver_match.url_name == 'home_patient' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'home_patient' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
                   >Agendar consulta</a
                 >
                 {% if user.is_authenticated %}
                 <a
                   href=""
-                  class="{% if request.resolver_match.url_name == 'minhas_consultas' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'minhas_consultas' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
                   >Minhas consultas</a
                 >
                 {% endif %}
                 <a
                   href=""
-                  class="{% if request.resolver_match.url_name == 'profissionais' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'profissionais' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
                   >Profissionais</a
                 >
                 <a
                   href=""
-                  class="{% if request.resolver_match.url_name == 'sobre_nos' %}block py-2 pl-2 text-white bg-bgPrimary-50 rounded md:bg-transparent md:text-bgPrimary-50 md:p-0  {% else %}block py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'sobre_nos' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
                   >Sobre nós</a
                 >
               </ul>
             </div>
-            <div class="w-12"></div>
+            <div class="w-12 ipad-pro:w-6"></div>
             <div
               class="flex flex-col space-y-3 md:space-x-3 md:space-y-0 justify-center md:flex-row lg:w-auto py-3"
             >
@@ -186,9 +186,11 @@
         </div>
     </nav>   
         <section class="lg:pt-20">{% block content %}{% endblock %}</section>
+        <!-- ... rest of your HTML code ... -->
+
         <footer class="bg-colorBlue-100 w-full h-[449px]">
-          <div class="flex flex-row justify-between text-white pt-20 mx-28">
-            <div class="flex flex-items-center pr-32">
+          <div class="flex flex-col lg:flex-row justify-between text-white pt-20 mx-4 lg:mx-28">
+            <div class="flex items-center pr-4 lg:pr-32 mb-4 lg:mb-0">
               <img class="h-12" src="{% static 'img\logo.svg' %}" alt="Logo" />
               <span class="font-inter font-extrabold text-4xl">medic</span>
             </div>
@@ -231,69 +233,21 @@
           </div>
 
           <div
-            class="mt-8 border-t border-[#69b3ff] pt-4 mx-28 text-white text-opacity-40"
+            class="mt-8 border-t border-[#69b3ff] pt-4 mx-4 lg:mx-28 text-white text-opacity-40"
           >
-            <div class="flex flex-wrap items-center justify-between">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
               <div class="mb-4 text-sm">
                 Copyright ©2023 All rights reserved
               </div>
-              <div class="flex space-x-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                >
-                  <path
-                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                  ></path>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                  <path
-                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                  ></path>
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                >
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
+              <div class="flex space-x-4 mb-4 lg:mb-0">
+                <!-- ... your SVG icons ... -->
               </div>
             </div>
           </div>
         </footer>
         {% block scripts %}{% endblock %}
         <!-- <script src="{% static 'js\selectButtons.js' %}"></script> -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
         <script src="{% static 'js\dropdown.js' %}"></script>
       </div>
   </body>

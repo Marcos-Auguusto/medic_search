@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'ipad-pro': {'raw': '(min-width: 1024px) and (max-width: 1280px)'},
+      },
       spacing: {
         '527': '527px',
         '507': '507px',
@@ -17,8 +20,8 @@ module.exports = {
       colors: {
         'bgPrimary': {
           50: 'rgba(5, 97, 218)',
-        200: 'rgba(141, 174, 242, 0.71)',
-        900: '#8DAEF2',
+          200: 'rgba(141, 174, 242, 0.71)',
+          900: '#8DAEF2',
         },
         'colorBlue':{
           100:'#056cf2'
@@ -34,7 +37,7 @@ module.exports = {
           300:'#b2d1fb',
         },
         'shadowPrimary': {
-        900: 'rgba(136, 163, 220, 1)',
+          900: 'rgba(136, 163, 220, 1)',
         },
       },
   },
