@@ -1,16 +1,16 @@
-let dropdown = document.querySelector('#chevronBtn');
+document.addEventListener('DOMContentLoaded', () => {
+    let toggleDropdown = document.getElementById('toggleDropdown');
+    let dropdownMenu = document.getElementById('dropdownMenu');
 
-dropdown.addEventListener('click', function(event) {
-    event.stopPropagation();
-    let dropdownMenu = this.querySelector('#userDropdownMenu');
-    dropdownMenu.classList.remove('hidden');
-    dropdownMenu.classList.add('block');
-});
+    dropdownMenu.style.display = 'none';
 
-window.addEventListener('click', function(event) {
-    let dropdownMenu = document.querySelector('#userDropdownMenu');
-    if (dropdownMenu.classList.contains('block')) {
-        dropdownMenu.classList.remove('block');
-        dropdownMenu.classList.add('hidden');
-    }
+    toggleDropdown.addEventListener('click', () => {
+        dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+    });
+
+    window.addEventListener('click', event => {
+        if (!toggleDropdown.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
 });
