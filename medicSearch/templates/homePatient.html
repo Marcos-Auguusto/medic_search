@@ -11,11 +11,11 @@
   ></div>
   <div class="flex justify-center">
     <form
-      class="w-[527px] h-[507px] bg-white rounded-xl shadow-xl mt-12 absolute z-20 flex items-center justify-center"
+      class="w-[507px] h-[507px] bg-white rounded-3xl  shadow-xl mt-12 absolute z-20 flex items-center justify-center"
       action="{% url 'medics' %}"
       method="GET"
     >
-      <div class="max-w-[527px] flex flex-col items-center mx-12">
+      <div class="max-w-[527px] flex flex-col items-center">
         <h3 class="font-inter font-semibold text-4xl mb-5">
           Encontre um médico
         </h3>
@@ -25,7 +25,7 @@
               <input
                 type="search"
                 id="search-dropdown"
-                class="border border-gray-300 text-gray-900 font-inter text-sm rounded-lg focus:border-blue-500 focus:ring-2 w-full p-2.5"
+                class="border border-gray-300 text-gray-900 font-inter text-sm rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 w-full p-2.5"
                 placeholder="Buscar por nome"
                 required
               />
@@ -54,7 +54,7 @@
           </div>
           <div class="relative">
             <select
-              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+              class="border bg-white border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-200 focus:ring-2 focus:border-blue-500 block w-full p-2.5 appearance-none"
             >
               <option selected disabled>Selecione uma especialidade</option>
               <option value="1"></option>
@@ -81,7 +81,7 @@
           </div>
           <div class="relative">
             <select
-              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+              class="border bg-white border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-200 focus:ring-2 focus:border-blue-500 block w-full p-2.5 appearance-none"
             >
               <option selected disabled>Selecione um Bairro</option>
               <option value="1"></option>
@@ -108,7 +108,7 @@
           </div>
           <div class="relative">
             <select
-              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+              class="border bg-white border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-200 focus:ring-2 focus:border-blue-500 block w-full p-2.5 appearance-none"
             >
               <option selected disabled>Selecione uma Cidade</option>
               <option value="1"></option>
@@ -135,7 +135,7 @@
           </div>
           <div class="relative">
             <select
-              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 appearance-none"
+              class="border bg-white border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-200 focus:ring-2 focus:border-blue-500 block w-full p-2.5 appearance-none"
             >
               <option selected disabled>Selecione um Estado</option>
               <option value="1"></option>
