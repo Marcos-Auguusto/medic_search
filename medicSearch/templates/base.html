@@ -129,7 +129,7 @@
                     alt="Default avatar"
                   />
                   {% endif %}
-                  <div class="font-medium pl-4">
+                  <div class="font-inter font-base pl-4">
                     <div class="-mb-1">{{ user.username }}</div>
                     <div class="text-sm text-gray-500">
                       {{ user.email }}
@@ -139,7 +139,7 @@
                   >
                     <svg
                       id="chevronIcon"
-                      class="w-3 h-3 text-gray-400 hover:text-gray-800"
+                      class="w-3 h-3 text-gray-400 hover:text-gray-800 transition duration-200 ease-in-out transform"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -154,16 +154,16 @@
                       />
                     </svg>
                     <!-- Dropdown menu -->
-                    <div id="dropdownMenu" class="absolute origin-top-right right-0 mt-[25px] z-10 w-48 bg-white divide-y divide-gray-100 rounded-b-lg rounded-lg shadow-lg animate-fade-down animate-once animate-duration-[250ms] animate-ease-out">
-                        <ul class="py-1 text-sm text-gray-700">
+                    <div id="dropdownMenu" class="absolute origin-top-right right-0 mt-[26px] z-10 w-52 bg-white divide-y divide-gray-100 rounded-b-lg rounded-lg shadow-lg animate-fade-down animate-once animate-duration-[250ms] animate-ease-out">
+                        <ul class="py-1 font-inter text-sm text-gray-700">
                           <li>
-                            <a href="{% url 'edit_profile' %}" class="flex items-center px-4 py-2 text-sm mx-1 hover:rounded-lg  hover:bg-blue-100  ">
+                            <a href="{% url 'edit_profile' %}" class="flex items-center px-4 py-2 text-sm mx-1 hover:rounded-lg  hover:bg-gray-100">
                               <svg  class="w-4 h-4 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                   <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                               </svg>Favoritos</a>
                           </li>
                           <li>
-                            <a href="{% url 'edit_profile' %}" class="flex items-center px-4 py-2 text-sm mx-1 hover:rounded-lg  hover:bg-blue-100  ">
+                            <a href="{% url 'edit_profile' %}" class="flex items-center px-4 py-2 text-sm mx-1 hover:rounded-lg  hover:bg-gray-100">
                               <svg class="w-4 h-4 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                   <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                       <circle cx="12" cy="12" r="3"/>
@@ -173,7 +173,7 @@
                           </li>
                         </ul>
                         <div class="py-1 text-sm">
-                          <a href="{% url 'logout'%}" class="flex items-center px-4 py-2 mx-1 hover:rounded-lg  hover:bg-blue-100 ">
+                          <a href="{% url 'logout'%}" class="flex items-center px-4 py-2 mx-1 hover:rounded-lg  hover:bg-gray-100 ">
                             <svg class="w-4 h-4 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4m7 14l5-5l-5-5m5 5H9"/>
                             </svg>Sair</a>
