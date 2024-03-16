@@ -1611,11 +1611,6 @@ video {
   color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 
-.text-btn-200 {
-  --tw-text-opacity: 1;
-  color: rgb(4 81 182 / var(--tw-text-opacity));
-}
-
 .text-colorBlue-100 {
   --tw-text-opacity: 1;
   color: rgb(5 108 242 / var(--tw-text-opacity));
