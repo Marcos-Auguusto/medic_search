@@ -35,6 +35,7 @@ module.exports = {
           100: '#e6f0fe',
           200: '#dae9fd',
           300: '#b2d1fb',
+          500: '#86B5F6',
         },
         shadowPrimary: {
           900: 'rgba(136, 163, 220, 1)',
