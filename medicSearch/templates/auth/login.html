@@ -20,18 +20,32 @@
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
   </head>
   <body>
-    <span class="absolute z-50 w-full flex justify-center mt-[155px]">
-      <button
-        type="button"
-        class="text-white bg-btn-light-300 focus:outline-none focus:ring-4 focus:ring-btn-light-200 focus:bg-btn-light-500 hover:bg-btn-light-500 shadow-lg shadow-sky-700-200/70 font-inter font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-      >
-        Portal do Médico
-      </button>
-    </span>
-    <div class="w-screen h-screen flex flex-col">
+    <div class="w-screen h-screen flex lg:mx-auto lg:flex-row">
       <!-- imagem lado esquerdo -->
-      <div class="absolute flex justify-center lg:w-3/5">
-        <div class="absolute w-full flex justify-center md:flex md:items-center">
+      <div class="absolute flex justify-center lg:w-1/2 lg:relative lg:my-auto">
+        <span
+          class="absolute top-0 left-1/2 transform -translate-x-1/2 z-50 w-full flex justify-center mt-[155px] lg:absolute lg:mt-[104px] lg:justify-end lg:mr-[-100px]"
+        >
+          <button
+            type="button"
+            class="flex text-white bg-btn-light-300 focus:outline-none focus:ring-4 focus:ring-btn-light-200 focus:bg-btn-light-500 hover:bg-btn-light-500 shadow-lg shadow-sky-700-200/70 font-inter font-medium rounded-lg text-sm px-2.5 py-2.5 text-center me-2 mb-2 lg:mt-[-30px] lg:ml-[76px]"
+          >
+            <svg
+              class="w-5 mr-1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+            >
+              <path
+                fill="currentColor"
+                d="m13.281 6.781l-8.5 8.5l-.687.719l.687.719l8.5 8.5l1.438-1.438L7.938 17H28v-2H7.937l6.782-6.781z"
+              />
+            </svg>
+            Portal do Médico
+          </button>
+        </span>
+        <div
+          class="absolute w-full h-full flex justify-center md:items-center lg:items-end"
+        >
           <div
             class="flex flex-col text-center z-30 font-inter text-white mt-7 md:mt-6"
           >
@@ -41,7 +55,9 @@
             <span class="font-bold text-[28px]">salvando vidas.</span>
           </div>
           <!-- logo -->
-          <div class="absolute z-30 mr-6 mt-24 md:mt-14 md:mr-0 md:relative md:ml-10">
+          <div
+            class="absolute z-30 mr-1 mt-24 md:mt-14 md:mr-0 md:relative md:ml-10 lg:flex lg:justify-between lg:mt-2"
+          >
             <div class="flex items-center mb-9">
               <img
                 class="h-[40px] text-white"
@@ -55,23 +71,26 @@
             </div>
           </div>
         </div>
-        <div class="relative w-screen h-44 bg-btn-100/70 z-20"></div>
-        <div
-          class="hidden w-3/5 h-full bg-gradient-to-t from-bgPrimary-50/70 to-transparent to-70% z-10 absolute blend-multiply"
-        ></div>
-        <div
-          class="hidden w-full h-full bg-cover bg-center z-0 relative"
-          style="
-            background-image: url('{% static 'img/paciente-medico.png' %}');
-          "
-        ></div>
+        <div class="relative w-screen h-44 bg-btn-100/70 z-20 lg:hidden"></div>
+        <div class="lg:ml-[100px]">
+          <div
+            class="hidden lg:rounded-[60px] lg:w-[636px] lg:h-[607px] bg-gradient-to-t from-bgPrimary-50 to-transparent to-70% z-10 lg:absolute blend-multiply lg:block"
+          ></div>
+          <div
+            class="hidden lg:w-[636px] lg:h-[607px] lg:rounded-[60px] lg:bg-cover lg:bg-center z-0 lg:relative lg:block"
+            style="
+              background-image: url('{% static 'img/paciente-medico.png' %}');
+            "
+          ></div>
+        </div>
       </div>
       <!-- formulario lado direito -->
-      <form method="POST" class="bg-white w-full lg:w-2/5 mt-[220px]">
+      <form method="POST" class="w-full mt-[220px] lg:w-1/2 lg:mt-[61px]">
         <div class="flex justify-center">
           <button
             type="button"
-            class="text-gray-300 border border-gray-300 hover:border-gray-400 hover:text-gray-400 focus:outline-none font-medium rounded-2xl text-sm p-2.5 text-center inline-flex items-center me-2"
+            onclick="window.history.back()"
+            class="text-gray-300 border border-gray-300 hover:border-gray-400 hover:text-gray-400 focus:outline-none font-medium rounded-2xl text-sm p-2.5 text-center inline-flex items-center me-2 mb-[10px] lg:mb-[41px]"
           >
             <svg
               class="w-7 h-7"
@@ -88,12 +107,12 @@
             <span class="sr-only">Voltar</span>
           </button>
         </div>
-        <div
-          class="h-full flex flex-col justify-center mx-[32px] md:mx-20 lg:mx-20"
-        >
+        <div class="flex flex-col justify-center mx-[32px] md:mx-20 lg:ml-[100px]">
           {% csrf_token %}
           <!-- form -->
-          <div class="flex flex-col font-inter font-bold text-[38px] text-center mb-4 md:flex-row md:justify-center">
+          <div
+            class="flex flex-col font-inter font-bold text-[38px] text-center mb-4 md:flex-row md:justify-center"
+          >
             <span>Bem-vindo</span>
             <span class="mt-[-14px] md:mt-0 md:ml-2">de volta</span>
           </div>
@@ -134,23 +153,23 @@
             {% for message in messages %}
             <!-- prettier-ignore -->
             <li
-              class="{% if message.tags %}{% if message.tags == 'error' %}flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50
-              {% elif message.tags == 'info' %} flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 
-              {% elif message.tags == 'success' %} flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50{% endif %} {% endif %}"
-            >
-              <svg
-                class="flex-shrink-0 inline w-4 h-4 me-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
+                class="{% if message.tags %}{% if message.tags == 'error' %}flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50
+                {% elif message.tags == 'info' %} flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 
+                {% elif message.tags == 'success' %} flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50{% endif %} {% endif %}"
               >
-                <path
-                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-                />
-              </svg>
-              <span class="font-medium">{{ message }}</span>
-            </li>
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="font-medium">{{ message }}</span>
+              </li>
             {% endfor %}
           </ul>
           {% endif %}
