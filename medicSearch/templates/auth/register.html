@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-{% load static %}   
+{% load static %} 
 {% block content %}
 <!doctype html>
 <html lang="pt-BR">
@@ -18,32 +18,95 @@
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
   </head>
   <body>
-    <div class="w-screen h-screen flex">
+    <div class="w-screen h-screen flex lg:mx-auto ">
       <!-- imagem lado esquerdo -->
-      <div class="w-3/5">
+      <div class="absolute flex justify-center lg:w-1/2 lg:relative lg:mt-[34px] lg:my-auto">        
+        <span
+          class="absolute justify-center z-50 mt-[155px] lg:mr-[-600px] lg:mt-[115px]"
+        >
+          <button
+            type="button"
+            class="flex text-white bg-btn-light-300 focus:outline-none focus:ring-4 focus:ring-btn-light-200 focus:bg-btn-light-500 hover:bg-btn-light-500 shadow-lg shadow-sky-700-200/70 font-inter font-medium rounded-lg text-sm px-2.5 py-2.5 text-center me-2 mb-2 lg:mt-[-30px] lg:ml-[76px]"
+          >
+            <svg
+              class="w-5 mr-1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+            >
+              <path
+                fill="currentColor"
+                d="m13.281 6.781l-8.5 8.5l-.687.719l.687.719l8.5 8.5l1.438-1.438L7.938 17H28v-2H7.937l6.782-6.781z"
+              />
+            </svg>
+            Portal do Médico
+          </button>
+        </span>
         <div
-          class="w-3/5 h-full bg-gradient-to-t from-bgPrimary-50/70 to-transparent to-70% z-10 absolute blend-multiply"
-        ></div>
-        <div
-          class="w-full h-full bg-cover bg-center z-0 relative"
-          style="
-            background-image: url('{% static 'img/paciente-medico.png' %}');
-          "
-        ></div>
+          class="absolute w-full flex justify-center md:items-center lg:items-start  lg:space-x-24 lg:ml-[86px] lg:mt-[510px]"
+        >
+          <div
+            class="flex flex-col text-center z-30 font-inter text-white mt-7 md:mt-6 lg:mt-0 "
+          >
+            <span class="font-medium text-lg mb-[-10px]"
+              >Conectando médicos,</span
+            >
+            <span class="font-bold text-[28px]">salvando vidas.</span>
+          </div>
+          <!-- logo -->
+          <div
+            class="absolute z-30 mr-1 mt-24 md:mt-14 md:mr-0 md:relative md:ml-10 lg:flex lg:justify-between lg:mt-1 "
+          >
+            <div class="flex items-center mb-9 lg:mb-2">
+              <img
+                class="h-[40px] text-white"
+                src="{% static 'img\logo.svg' %}"
+                alt="Logo"
+              />
+              <span
+                class="font-inter font-extrabold text-white text-[32px] ml-3"
+                >medic</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="relative w-screen h-44 bg-btn-100/70 z-20 lg:hidden"></div>
+        <div class="lg:ml-[100px]">
+          <div
+            class="hidden lg:rounded-[60px] lg:w-[636px] lg:h-[607px] bg-gradient-to-t from-bgPrimary-50 to-transparent to-70% z-10 lg:absolute blend-multiply lg:block"
+          ></div>
+          <div
+            class="hidden lg:w-[636px] lg:h-[607px] lg:rounded-[60px] lg:bg-cover lg:bg-center z-0 lg:relative lg:block"
+            style="
+              background-image: url('{% static 'img/paciente-medico.png' %}');
+            "
+          ></div>
+        </div>
       </div>
       <!-- formulario lado direito -->
-      <form method="POST" class="bg-white w-2/5 shadow-xl z-10">
-        <div class="h-full flex flex-col justify-center mx-20">
-          <!-- logo -->
-          <a href="/" class="flex justify-center mb-6">
-            <img
-              class="h-[54px]"
-              src="{% static 'img\logo.svg' %}"
-              alt="Logo"
-            />
-            <span class="font-inter font-extrabold text-5xl ml-4">medic</span>
-          </a>
-          <!-- form -->
+      <form method="POST" class="w-full mt-[220px] lg:w-1/2 lg:mt-[61px]">
+        <div class="flex justify-center">
+          <button
+            type="button"
+            onclick="window.history.back()"
+            class="text-gray-300 border border-gray-300 hover:border-gray-400 hover:text-gray-400 focus:outline-none font-medium rounded-2xl text-sm p-2.5 text-center inline-flex items-center me-2 mb-[10px] lg:mb-[41px]"
+          >
+            <svg
+              class="w-7 h-7"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M10.53 2.97a.75.75 0 0 1 0 1.06L6.56 8l3.97 3.97a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 0"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sr-only">Voltar</span>
+          </button>
+        </div>
+        <!-- form -->
+        <div class="flex flex-col justify-center mx-[32px] md:mx-20 lg:ml-[80px] lg:mx-24">
           {% csrf_token %}
           <button
             class="text-neutral-900 border border-gray-300 bg-white hover:bg-btn-light-100 hover:border-btn-light-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-[18px]"
@@ -141,7 +204,7 @@
           >
             {{button_text}}
           </button>
-          <div class="flex justify-center font-inter text-sm mt-4">
+          <div class="flex justify-center font-inter text-sm mt-4 mb-10">
             <p class="text-neutral-500">Já tem uma conta?</p>
             <a href="{{link_href}}" class="font-medium text-neutral-950 ml-1"
               >Entrar</a
