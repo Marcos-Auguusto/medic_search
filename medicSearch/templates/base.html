@@ -27,9 +27,9 @@
 
     <title>Medic - {% block title %}{% endblock %}</title>
   </head>
-  <body class="bg-bgPrimary-200">
+  <body class="flex flex-col min-h-screen bg-bgPrimary-200">
     <nav
-      class="w-full bg-white border-gray-200 shadow-lg shadow-neutral-900/5 py-2 fixed z-40"
+      class="w-full bg-white border-gray-200 shadow-lg shadow-neutral-900/5 py-4 fixed z-40 lg:py-2"
     >
       <div>
         <div
@@ -82,29 +82,29 @@
               >
                 <a
                   href="{% url 'home' %}"
-                  class="{% if request.resolver_match.url_name == 'home' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'home' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-btn-light-200 md:hover:bg-btn-light-200 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 lg:hover:bg-white hover:scale-100 lg:py-0{% endif %}"
                   >Home</a
                 >
                 <a
                   href="{% url 'home_patient' %}"
-                  class="{% if request.resolver_match.url_name == 'home_patient' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'home_patient' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-btn-light-200 md:hover:bg-btn-light-200 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 lg:hover:bg-white hover:scale-100 lg:py-0{% endif %}"
                   >Agendar consulta</a
                 >
                 {% if user.is_authenticated %}
                 <a
                   href=""
-                  class="{% if request.resolver_match.url_name == 'minhas_consultas' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'minhas_consultas' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-btn-light-200 md:hover:bg-btn-light-200 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 lg:hover:bg-white hover:scale-100 lg:py-0{% endif %}"
                   >Minhas consultas</a
                 >
                 {% endif %}
                 <a
                   href=""
-                  class="{% if request.resolver_match.url_name == 'profissionais' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'profissionais' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-btn-light-200 md:hover:bg-btn-light-200 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 lg:hover:bg-white hover:scale-100 lg:py-0{% endif %}"
                   >Profissionais</a
                 >
                 <a
                   href=""
-                  class="{% if request.resolver_match.url_name == 'sobre_nos' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-100 lg:py-0{% endif %}"
+                  class="{% if request.resolver_match.url_name == 'sobre_nos' %}block py-2 pl-2 text-white text-center bg-bgPrimary-50 rounded lg:bg-transparent lg:text-bgPrimary-50 lg:p-0 lg:hover:text-blue-800 {% else %}block text-center py-2 text-gray-900 rounded hover:bg-btn-light-200 md:hover:bg-btn-light-200 hover:bg-transparent hover:text-bgPrimary-50 transition duration-200 ease-in-out transform hover:-translate-y-1 lg:hover:bg-white hover:scale-100 lg:py-0{% endif %}"
                   >Sobre nós</a
                 >
               </ul>
@@ -130,7 +130,9 @@
                     </svg>
                   </a>
                   <!-- Adicione este div para criar a bola de notificação -->
-                  <div class="absolute top-0 right-0 w-3 h-3 border-2 border-white bg-red-500 rounded-full mr-[25px]"></div>
+                  <div
+                    class="absolute top-0 right-0 w-3 h-3 border-2 border-white bg-red-500 rounded-full mr-[25px]"
+                  ></div>
                 </div>
                 {% if user.profile.image %}
                 <img
@@ -174,7 +176,9 @@
                     id="dropdownMenu"
                     class="absolute origin-top-right right-0 mt-[26px] z-10 w-52 bg-white divide-y divide-gray-100 rounded-b-lg rounded-lg shadow-lg animate-fade-down animate-once animate-duration-[250ms] animate-ease-out"
                   >
-                    <ul class="py-1 font-inter font-light text-sm text-gray-700">
+                    <ul
+                      class="py-1 font-inter font-light text-sm text-gray-700"
+                    >
                       <li>
                         <a
                           href="{% url 'edit_profile' %}"
@@ -192,8 +196,8 @@
                               stroke-linejoin="round"
                               stroke-width="2"
                               d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                            /></svg
-                          >Favoritos</a
+                            /></svg>
+                            Favoritos</a
                         >
                       </li>
                       <li>
@@ -217,8 +221,8 @@
                               <path
                                 d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83a2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33a1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2a2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0a2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2a2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83a2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2a2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0a2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2a2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
                               />
-                            </g></svg
-                          >Editar perfil</a
+                            </g></svg>
+                          Editar perfil</a
                         >
                       </li>
                     </ul>
@@ -239,9 +243,8 @@
                             stroke-linejoin="round"
                             stroke-width="2"
                             d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4m7 14l5-5l-5-5m5 5H9"
-                          /></svg
-                        >Sair</a
-                      >
+                          /></svg>
+                          Sair</a>
                     </div>
                   </div>
                 </div>
@@ -265,57 +268,96 @@
             {% endif %}
           </div>
         </div>
-        </nav>
-        <section class="lg:pt-20">{% block content %}{% endblock %}</section>
+    </nav>
+        <section class="flex-grow lg:pt-20">
+          {% block content %}{% endblock %}
+        </section>
         <!-- ... rest of your HTML code ... -->
-        <footer class="bg-colorBlue-100 w-full h-[449px]">
+        <footer class="bg-colorBlue-100 w-full h-full">
           <div
-            class="flex flex-col lg:flex-row justify-between text-white pt-20 mx-4 lg:mx-28"
+            class="flex flex-col lg:flex-row justify-between text-white mx-4 lg:mx-28"
           >
-            <div class="flex items-center pr-4 lg:pr-32 mb-4 lg:mb-0">
-              <img class="h-12" src="{% static 'img\logo.svg' %}" alt="Logo" />
-              <span class="font-inter font-extrabold text-4xl">medic</span>
+            <div class="font-inter mt-[69px]">
+              <div class="flex justify-center items-center">
+                <img
+                  class="w-[47px] h-[47px]"
+                  src="{% static 'img\logo.svg' %}"
+                  alt="Logo"
+                />
+                <span class="font-inter font-extrabold text-[42px] ml-[14px]"
+                  >medic</span
+                >
+              </div>
+              <p class="font-light text-sm text-center mt-[34px]">
+                Oferecemos atendimento especializado em <br/>
+                diversas áreas da saúde, proporcionando <br/>
+                cuidados de qualidade e bem-estar para <br/>
+                nossos pacientes.
+              </p>
+              <div class="flex justify-center gap-3 mt-10">
+                <a href="">
+                  <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.10656 11.25C1.10656 5.64793 5.64793 1.10656 11.25 1.10656C16.8521 1.10656 21.3934 5.64793 21.3934 11.25C21.3934 16.4063 17.546 20.664 12.5654 21.3089V15.203H14.7757L15.1962 12.461H12.5654V10.6816C12.5654 9.93146 12.9329 9.20026 14.1112 9.20026H15.3074V6.86588C15.3074 6.86588 14.2218 6.68061 13.184 6.68061C11.0173 6.68061 9.60111 7.99379 9.60111 10.3712V12.461H7.19262V15.203H9.60111V21.2601C4.78325 20.4725 1.10656 16.2906 1.10656 11.25ZM11.25 0C5.0368 0 0 5.0368 0 11.25C0 17.4632 5.0368 22.5 11.25 22.5C17.4632 22.5 22.5 17.4632 22.5 11.25C22.5 5.0368 17.4632 0 11.25 0Z" fill="white" fill-opacity="0.7"/>
+                  </svg>
+                  <span class="sr-only">Facebook</span>
+                </a>
+                <a href="">
+                  <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.40978 11.25C1.40978 5.64793 5.95115 1.10656 11.5532 1.10656C17.1553 1.10656 21.6967 5.64793 21.6967 11.25C21.6967 16.8521 17.1553 21.3934 11.5532 21.3934C5.95115 21.3934 1.40978 16.8521 1.40978 11.25ZM11.5532 0C5.34002 0 0.303223 5.0368 0.303223 11.25C0.303223 17.4632 5.34002 22.5 11.5532 22.5C17.7664 22.5 22.8032 17.4632 22.8032 11.25C22.8032 5.0368 17.7664 0 11.5532 0ZM8.04622 6.03578C8.42109 5.88847 8.8499 5.78826 9.47784 5.75864C10.1073 5.72795 10.308 5.7211 11.9107 5.71803C13.5135 5.71497 13.7157 5.72193 14.3439 5.74908C14.972 5.77622 15.4011 5.87525 15.7767 6.02055C16.1653 6.17022 16.4949 6.37146 16.8233 6.699C17.1516 7.02655 17.354 7.35503 17.5057 7.743C17.6529 8.11823 17.7529 8.54563 17.7827 9.17498C17.8126 9.80433 17.8198 10.0052 17.8229 11.6076C17.8259 13.21 17.8194 13.4112 17.7919 14.0411C17.7647 14.6688 17.6659 15.0981 17.5205 15.4734C17.3705 15.8622 17.1691 16.1916 16.842 16.5202C16.515 16.8488 16.186 17.0511 15.798 17.2029C15.4229 17.3495 14.9965 17.45 14.367 17.4799C13.7375 17.5097 13.5358 17.5168 11.9336 17.5199C10.3314 17.523 10.1293 17.5166 9.50109 17.4891C8.87292 17.4616 8.44363 17.3627 8.06829 17.2176C7.67878 17.0672 7.34994 16.8662 7.02145 16.5389C6.69297 16.2116 6.49031 15.8829 6.33887 15.4949C6.19157 15.1199 6.09171 14.6912 6.06173 14.0634C6.03128 13.4338 6.0242 13.2329 6.02113 11.6303C6.01806 10.0276 6.0242 9.82569 6.05193 9.1974C6.07967 8.56912 6.17811 8.13995 6.32341 7.76425C6.47355 7.37569 6.67503 7.04661 7.00222 6.71824C7.3294 6.38988 7.65824 6.18698 8.04622 6.03578ZM8.45071 16.2267C8.65892 16.3068 8.97136 16.4024 9.54677 16.4274H9.54688C10.1693 16.4543 10.3552 16.4607 11.9311 16.4572C13.5071 16.4538 13.6936 16.4477 14.316 16.4184C14.8907 16.391 15.2031 16.2942 15.4109 16.2132C15.6864 16.1055 15.8826 15.9778 16.0887 15.7705C16.2948 15.5633 16.4229 15.3667 16.5291 15.0911C16.6093 14.8827 16.7046 14.5701 16.7298 13.9947C16.757 13.3728 16.7626 13.1857 16.7598 11.6105C16.7569 10.0352 16.7502 9.84859 16.7206 9.2262C16.6934 8.65068 16.5969 8.33872 16.5155 8.13133C16.4079 7.85537 16.2801 7.65956 16.0727 7.45323C15.8653 7.24691 15.669 7.11932 15.3932 7.01309C15.1853 6.93271 14.8724 6.83746 14.2975 6.81243C13.6748 6.78505 13.4879 6.77915 11.9125 6.78257C10.3371 6.786 10.1506 6.7919 9.52824 6.8214C8.95306 6.84879 8.64098 6.94534 8.43301 7.02655C8.15764 7.13419 7.96111 7.2619 7.75515 7.46929C7.54918 7.67667 7.42123 7.87272 7.315 8.1488C7.2351 8.35689 7.1389 8.66968 7.11435 9.24462C7.08708 9.86677 7.08106 10.0533 7.08449 11.6289C7.08791 13.2045 7.09405 13.3912 7.12332 14.0131C7.15023 14.5886 7.24761 14.9006 7.32846 15.1088C7.4361 15.384 7.56358 15.5811 7.77108 15.7866C7.97858 15.9921 8.17499 16.1205 8.45071 16.2267ZM14.4779 8.85805C14.3999 8.74172 14.3581 8.60485 14.3579 8.46478C14.3576 8.27699 14.4319 8.09677 14.5644 7.96374C14.6969 7.83071 14.8769 7.75577 15.0647 7.7554C15.2048 7.75512 15.3418 7.79639 15.4584 7.87398C15.575 7.95158 15.666 8.06201 15.7199 8.19133C15.7737 8.32064 15.788 8.46302 15.7609 8.60045C15.7339 8.73789 15.6667 8.86421 15.5678 8.96345C15.4689 9.06268 15.3428 9.13036 15.2055 9.15793C15.0682 9.18551 14.9257 9.17173 14.7962 9.11836C14.6667 9.06498 14.5559 8.97439 14.4779 8.85805ZM11.9277 14.6491C10.2544 14.6523 8.89511 13.2986 8.8918 11.6249C8.88862 9.9514 10.2426 8.5919 11.9162 8.58859C13.5897 8.58529 14.9494 9.93936 14.9525 11.6131C14.9557 13.2868 13.6011 14.6459 11.9277 14.6491ZM10.2842 10.5291C10.0687 10.8531 9.95404 11.2337 9.95481 11.6227C9.95529 11.8811 10.0067 12.1368 10.106 12.3753C10.2053 12.6138 10.3506 12.8304 10.5337 13.0127C10.7167 13.1951 10.9339 13.3395 11.1728 13.4379C11.4117 13.5363 11.6676 13.5866 11.926 13.5861C12.315 13.5853 12.6952 13.4692 13.0182 13.2524C13.3413 13.0356 13.5929 12.7278 13.741 12.3681C13.8892 12.0083 13.9274 11.6127 13.8507 11.2312C13.7741 10.8498 13.586 10.4996 13.3104 10.225C13.0347 9.95046 12.6838 9.76379 12.302 9.68864C11.9203 9.61349 11.5248 9.65323 11.1656 9.80284C10.8065 9.95245 10.4997 10.2052 10.2842 10.5291Z" fill="white" fill-opacity="0.7"/>
+                  </svg>
+                  <span class="sr-only">Instagram</span>
+                </a>
+                <a href="">
+                  <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.71312 11.25C1.71312 5.64793 6.2545 1.10656 11.8566 1.10656C17.4586 1.10656 22 5.64793 22 11.25C22 16.8521 17.4586 21.3934 11.8566 21.3934C6.2545 21.3934 1.71312 16.8521 1.71312 11.25ZM11.8566 0C5.64336 0 0.606567 5.0368 0.606567 11.25C0.606567 17.4632 5.64336 22.5 11.8566 22.5C18.0698 22.5 23.1066 17.4632 23.1066 11.25C23.1066 5.0368 18.0698 0 11.8566 0ZM17.416 5.71721H15.6147L12.652 9.13021L10.0686 5.71721H6.32378L10.7796 11.5477L6.56079 16.3828H8.3621L11.6329 12.6617L14.4771 16.3828H18.1271L13.4816 10.2442L17.416 5.71721ZM15.9702 15.2926H14.9748L8.4332 6.73637H9.52346L15.9702 15.2926Z" fill="white" fill-opacity="0.7"/>
+                  </svg>
+                  <span class="sr-only">Twitter</span>
+                </a>
+              </div>
             </div>
-            <div class="mb-6 w-full lg:w-1/4">
-              <h5 class="mb-2 text-2xl font-inter font-medium">
-                Central <br />
-                de ajuda
-              </h5>
-              <ul class="font-inter font-light space-y-6 pt-6">
-                <li>Perguntas Frequentes</li>
-                <li>Fale Conosco</li>
-                <li>Ouvidoria</li>
-              </ul>
-            </div>
-            <div class="mb-6 w-full lg:w-1/4">
-              <h5 class="mb-2 text-2xl font-inter font-medium">
-                Atendimento <br />
-                à convênios
-              </h5>
-              <ul class="font-inter font-light space-y-6 pt-6">
-                <li>Planos Atendidos</li>
-                <li>Especialidades</li>
-                <li>
-                  Agendamentos de <br />
-                  Consulta
-                </li>
-              </ul>
-            </div>
-            <div class="w-full lg:w-1/4">
-              <h5 class="mb-2 text-2xl font-inter font-medium">
-                Responsabilidade <br />
-                social
-              </h5>
-              <ul class="font-inter font-light space-y-6 pt-6">
-                <li>Ações Sociais</li>
-                <li>Voluntariado</li>
-                <li>Faça sua doação</li>
-              </ul>
+            <div class="flex flex-col md:flex-row">
+              <div class="mb-6 w-full lg:w-1/4 text-center mt-[83px]">
+                <h5 class="mb-2 text-lg font-inter font-medium leading-tight">
+                  Central de <br/>
+                  ajuda
+                </h5>
+                <ul class="font-inter font-light text-sm space-y-6 pt-6">
+                  <a href="">
+                    <li>Perguntas Frequentes</li>
+                  </a>
+                  <li>Fale Conosco</li>
+                  <li>Ouvidoria</li>
+                </ul>
+              </div>
+              <div class="mb-6 w-full lg:w-1/4 text-center mt-[83px]">
+                <h5 class="mb-2 text-lg font-inter font-medium leading-tight">
+                  Atendimento <br />
+                  à convênios
+                </h5>
+                <ul class="font-inter font-light text-sm space-y-6 pt-6">
+                  <li>Planos Atendidos</li>
+                  <li>Especialidades</li>
+                  <li>
+                    Agendamentos de <br />
+                    Consulta
+                  </li>
+                </ul>
+              </div>
+              <div class="mb-6 w-full lg:w-1/4 text-center mt-[83px]">
+                <h5 class="mb-2 text-lg font-inter font-medium leading-tight">
+                  Responsabilidade <br />
+                  social
+                </h5>
+                <ul class="font-inter font-light text-sm space-y-6 pt-6">
+                  <li>Ações Sociais</li>
+                  <li>Voluntariado</li>
+                  <li>Faça sua doação</li>
+                </ul>
+              </div>
             </div>
           </div>
-
           <div
-            class="mt-8 border-t border-[#69b3ff] pt-4 mx-4 lg:mx-28 text-white text-opacity-40"
+            class="mt-8 border-t border-btn-light-500/70 pt-4 mx-12 lg:mx-28 text-white text-opacity-40"
           >
             <div class="flex flex-col lg:flex-row items-center justify-between">
               <div class="mb-4 text-sm">
